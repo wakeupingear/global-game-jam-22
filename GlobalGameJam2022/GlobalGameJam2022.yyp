@@ -3,9 +3,12 @@
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},"order":0,},
     {"id":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},"order":1,},
     {"id":{"name":"open_two_windows","path":"scripts/open_two_windows/open_two_windows.yy",},"order":2,},
+    {"id":{"name":"rm_startup","path":"rooms/rm_startup/rm_startup.yy",},"order":2,},
     {"id":{"name":"spr_solid","path":"sprites/spr_solid/spr_solid.yy",},"order":1,},
-    {"id":{"name":"obj_game","path":"objects/obj_game/obj_game.yy",},"order":2,},
+    {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},"order":2,},
+    {"id":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},"order":1,},
     {"id":{"name":"window_frame","path":"extensions/window_frame/window_frame.yy",},"order":1,},
+    {"id":{"name":"Netcode","path":"scripts/Netcode/Netcode.yy",},"order":3,},
     {"id":{"name":"ExecuteShell","path":"scripts/ExecuteShell/ExecuteShell.yy",},"order":0,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":0,},
     {"id":{"name":"gamepad_force_focus","path":"extensions/gamepad_force_focus/gamepad_force_focus.yy",},"order":0,},
@@ -28,9 +31,13 @@
   "tutorialPath": "",
   "configs": {
     "name": "Default",
-    "children": [],
+    "children": [
+      {"name":"Test","children":[],},
+    ],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"rm_startup","path":"rooms/rm_startup/rm_startup.yy",},},
+    {"roomId":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
     {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
   ],
   "Folders": [

@@ -9,7 +9,7 @@ function open_two_windows() {
 	    window_set_caption("P1")
 	
 		window_set_position(200, 260);
-		obj_game.program = 0;
+		obj_controller.program = 0;
 	}
 
 	if (parameter_count() > 3) {
@@ -17,7 +17,7 @@ function open_two_windows() {
 	    window_set_caption("P2")
 	
 		window_set_position(900, 260);
-		obj_game.program = 1;
+		obj_controller.program = 1;
 	}
 	/* Not sure why this is here so i'm commenting it
 	if (parameter_count() > 3) {
