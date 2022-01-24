@@ -5,11 +5,11 @@ camera_set_view_pos(view_camera[1], window_frame_get_x(), window_frame_get_y());
 window_frame_update();
 
 //End Step
-for (var k = ds_map_find_first(map); !is_undefined(k); k = ds_map_find_next(map, k)) {
-    var _id=map[? k];
+for (var k = ds_map_find_first(netObjs); !is_undefined(k); k = ds_map_find_next(netObjs, k)) {
+    var _id=netObjs[? k];
     if !instance_exists(_id){
         //send destroy event explicitly from object
-        ds_map_remove(map, k);
+        ds_map_remove(netObjs, k);
         continue;
     }
     for (var i=0;i<array_length(_id.network);i++){ //loop through properties

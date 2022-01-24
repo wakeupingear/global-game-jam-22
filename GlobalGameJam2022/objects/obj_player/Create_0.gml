@@ -6,4 +6,4 @@ hsp = 0;
 vsp = 0;
 
 if isServer network = new Network([]);
-else network = new Network([oP.xy,oP.xscale,oP.yscale,oP.index]);
+else network = new Network(id, [oP.xy,oP.xscale,oP.yscale,oP.index]);

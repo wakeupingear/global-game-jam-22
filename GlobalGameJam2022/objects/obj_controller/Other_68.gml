@@ -38,7 +38,7 @@ switch async_load[? "type"] {
 						var _id=netObjs[? _token];
 						if is_undefined(_id){
 							_id=instance_create_layer(_tX,_tY,_tL,_tO);
-							ds_map_create(netObjs,_id);
+							ds_map_add(netObjs,_token,_id);
 						}
 
 						//must match getObjProperty()

@@ -12,10 +12,14 @@ enum netData {
 
 enum oP {
 	xy,
-	scale,
+	x,
+	y,
+	xscale,
+	yscale,
 	index,
 	varReal,
-	varString
+	varString,
+	destroy
 }
 
 enum hostSide {
@@ -26,7 +30,7 @@ enum hostSide {
 
 program = 0;
 open_two_windows();
-#macro isServer (!program)
+#macro isServer (!obj_controller.program)
 
 client = -1;
 connected = false;

@@ -1,5 +1,5 @@
-function Network(_props,_host) constructor{
-	token = [x,y,layer,object_index];
+function Network(_id, _props,_host) constructor{
+	token = [_id.x,_id.y,_id.layer,_id.object_index];
 	host = _host;
 	data = ds_list_create();
 	if isHost(host){
@@ -7,12 +7,14 @@ function Network(_props,_host) constructor{
 			ds_list_add(data,_props[i]);
 		}
 	}
-	lastProps = array_create(array_length(data), -1);
-	ds_map_add(obj_controller.netObjs,token,id);
+	lastProps = array_create(ds_list_size(data), -1);
+	
+	
+	ds_map_add(obj_controller.netObjs,token,_id);
 
 	destroy = function(){
-		sendPacket([packetType.objData,oP.destroy]);
-		ds_list_destroy(data)
+		sendPacket([netData.objData,oP.destroy]);
+		ds_list_destroy(data);
 	}
 }
 
@@ -46,9 +48,9 @@ function getObjProperty(_id,prop){
 		case oP.y:
 			return _id.y;
 		case oP.xscale:
-			return _id.xscale;
+			return _id.image_xscale;
 		case oP.yscale:
-			return _id.yscale;
+			return _id.image_yscale;
 		case oP.index:
 			return _id.image_index;
 		default:
