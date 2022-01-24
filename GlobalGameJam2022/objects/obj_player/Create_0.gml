@@ -1,6 +1,3 @@
-/// @description Insert description here
-// You can write your code in this editor
-
 spd = 5;
 grav = 1;
 jumpPower = 12;
@@ -8,5 +5,5 @@ jumpPower = 12;
 hsp = 0;
 vsp = 0;
 
-//open_two_windows();
-
+if isServer network = new Network([]);
+else network = new Network([oP.xy,oP.xscale,oP.yscale,oP.index]);

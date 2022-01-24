@@ -1,5 +1,19 @@
-function Network() constructor{
-	//token=
+function Network(_props,_host) constructor{
+	token = [x,y,layer,object_index];
+	host = _host;
+	data = ds_list_create();
+	if isHost(host){
+		for (var i=0;i<array_length(_props);i++){
+			ds_list_add(data,_props[i]);
+		}
+	}
+	lastProps = array_create(array_length(data), -1);
+	ds_map_add(obj_controller.netObjs,token,id);
+
+	destroy = function(){
+		sendPacket([packetType.objData,oP.destroy]);
+		ds_list_destroy(data)
+	}
 }
 
 function sendPacket(array,buf){
@@ -22,4 +36,26 @@ function sendPacket(array,buf){
 		}
 		network_send_packet(client,buf,buffer_tell(buf));
 	}
+}
+
+//must match buffer reads in obj_controller.async
+function getObjProperty(_id,prop){
+	switch prop{
+		case oP.x:
+			return _id.x;
+		case oP.y:
+			return _id.y;
+		case oP.xscale:
+			return _id.xscale;
+		case oP.yscale:
+			return _id.yscale;
+		case oP.index:
+			return _id.image_index;
+		default:
+			return variable_instance_get(_id,prop);
+	}
+}
+
+function isHost(host){
+	return (host==hostSide.both||(isServer&&host==hostSide.server)||(!isServer&&host==hostSide.client));
 }

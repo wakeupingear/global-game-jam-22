@@ -6,20 +6,37 @@ enum netData {
 	null,
 	connect,
 	disconnect,
-	newRoom
+	newRoom,
+	objData
+}
+
+enum oP {
+	xy,
+	scale,
+	index,
+	varReal,
+	varString
+}
+
+enum hostSide {
+	server,
+	client,
+	both
 }
 
 program = 0;
 open_two_windows();
+#macro isServer (!program)
 
 client = -1;
 connected = false;
 sendNextRoom = false;
+netObjs = ds_map_create();
 global.BUFFER_SMALL = buffer_create(64,buffer_fixed,1);
-if(program == 0){
+if(isServer){
 	
 }
-else if(program == 1){
+else {
 	window_set_size(500, 500);
 	surface_resize(application_surface, 500, 500);
 	view_visible[0] = false;
@@ -27,10 +44,10 @@ else if(program == 1){
 }
 
 connect = function(){
-	if(program == 0){ //server
+	if (isServer) {
 		server = network_create_server(network_socket_tcp,32860,1);
 	}
-	else if(program == 1){
+	else {
 		socket = network_create_socket(network_socket_tcp);
 		network_connect_async(socket,"127.0.0.1",32860+(!program));
 	}
@@ -40,7 +57,7 @@ connect();
 onConnect = function(network_map){
 	connected=true;
 	client = network_map[? "socket"];
-	if !program sendPacket([netData.connect]);
+	if isServer sendPacket([netData.connect]);
 	if isTest room_goto(rm_test);
 	else room_goto(rm_title);
 }
