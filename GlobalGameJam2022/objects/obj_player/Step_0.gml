@@ -1,4 +1,4 @@
-if isServer {
+if isHost(host) {
 	if(keyboard_check_direct(ord("D"))){
 		hsp = spd;
 	}else if(keyboard_check_direct(ord("A"))){
@@ -39,3 +39,4 @@ if isServer {
 		y += vsp;
 	}
 }
+show_debug_message("X: "+string(x)+"; Y: "+string(y))

@@ -11,7 +11,6 @@ enum netData {
 }
 
 enum oP {
-	xy,
 	x,
 	y,
 	xscale,
@@ -41,6 +40,8 @@ if(isServer){
 	
 }
 else {
+	socket = network_create_socket(network_socket_tcp);
+	client=socket
 	window_set_size(500, 500);
 	surface_resize(application_surface, 500, 500);
 	view_visible[0] = false;
@@ -52,16 +53,18 @@ connect = function(){
 		server = network_create_server(network_socket_tcp,32860,1);
 	}
 	else {
-		socket = network_create_socket(network_socket_tcp);
-		network_connect_async(socket,"127.0.0.1",32860+(!program));
+		network_connect_async(socket,"127.0.0.1",32860);
 	}
 }
 connect();
 
 onConnect = function(network_map){
 	connected=true;
-	client = network_map[? "socket"];
-	if isServer sendPacket([netData.connect]);
+	if isServer {
+		client = network_map[? "socket"];
+		sendPacket([netData.connect]);
+	}
+	sendNextRoom=false;
 	if isTest room_goto(rm_test);
 	else room_goto(rm_title);
 }

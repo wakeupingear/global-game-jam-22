@@ -1,25 +1,28 @@
 function Network(_id, _props,_host) constructor{
-	token = [_id.x,_id.y,_id.layer,_id.object_index];
+	if is_undefined(_host) _host = hostSide.both;
+	tokenArr = [_id.x,_id.y,_id.depth,_id.object_index];
+	token = tokenString(tokenArr[0],tokenArr[1],tokenArr[2],tokenArr[3]);
+	//show_message("TOKEN: "+token)
 	host = _host;
-	data = ds_list_create();
+	data = [];
 	if isHost(host){
-		for (var i=0;i<array_length(_props);i++){
-			ds_list_add(data,_props[i]);
-		}
+		array_copy(data,0,_props,0,array_length(_props));
 	}
-	lastProps = array_create(ds_list_size(data), -1);
-	
-	
+	lastProps = array_create(array_length(data), -1);
+	if ds_map_exists(obj_controller.netObjs,token) show_error("DUPLICATE KEY: "+token+", "+object_get_name(_id.object_index),true);
 	ds_map_add(obj_controller.netObjs,token,_id);
-
-	destroy = function(){
+	//show_message(ds_map_size(obj_controller.netObjs))
+	destroy = function() {
 		sendPacket([netData.objData,oP.destroy]);
-		ds_list_destroy(data);
 	}
 }
 
-function sendPacket(array,buf){
-	if is_undefined(buf) buf=buffer_create(32,buffer_wrap,1);
+function tokenString(_x,_y,_l,_o){
+	return string(_x)+string(_y)+string(_l)+string(_o);
+}
+
+function sendPacket(array,buf=-1){
+	if buf==-1 buf=buffer_create(32,buffer_wrap,1);
 	with obj_controller {
 		buffer_seek(buf,buffer_seek_start,0);
 		for (var i=0;i<array_length(array);i++){

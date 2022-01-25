@@ -1,4 +1,3 @@
-//show_message("getting packet of type="+string(async_load[? "type"]))
 switch async_load[? "type"] {
 	case network_type_non_blocking_connect:
 		if !async_load[? "succeeded"] {
@@ -26,23 +25,27 @@ switch async_load[? "type"] {
 						game_end();
 						break;
 					case netData.newRoom:
-						sendNextRoom=false;
-						room_goto(buffer_read(_data,buffer_u8));
+						var _rm=buffer_read(_data,buffer_u8);
+						if _rm!=room{
+							sendNextRoom=false;
+							room_goto(buffer_read(_data,buffer_u8));
+						}
 						break;
 					case netData.objData:
-						var _tX=buffer_read(_data,buffer_u8);
-						var _tY=buffer_read(_data,buffer_u8);
-						var _tL=buffer_read(_data,buffer_u8);
-						var _tO=buffer_read(_data,buffer_u8);
-						var _token=string(_tX)+string(_tY)+string(_tL)+string(_tO);
+						//var _tX=buffer_read(_data,buffer_u8);
+						//var _tY=buffer_read(_data,buffer_u8);
+						//var _tL=buffer_read(_data,buffer_u8);
+						//var _tO=buffer_read(_data,buffer_u8);
+						//var _token=tokenString(_tX,_tY,_tL,_tO);
+						var _token = buffer_read(_data,buffer_string);
 						var _id=netObjs[? _token];
-						if is_undefined(_id){
-							_id=instance_create_layer(_tX,_tY,_tL,_tO);
+						if is_undefined(_id){ //broken
+							_id=instance_create_depth(_tX,_tY,_tL,_tO);
 							ds_map_add(netObjs,_token,_id);
 						}
-
 						//must match getObjProperty()
-						switch buffer_read(_data,buffer_u8){
+						var _type = buffer_read(_data,buffer_u8);
+						switch _type {
 							case oP.x:
 								_id.x=buffer_read(_data,buffer_u8);
 								break;

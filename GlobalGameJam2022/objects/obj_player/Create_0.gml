@@ -5,5 +5,6 @@ jumpPower = 12;
 hsp = 0;
 vsp = 0;
 
-if isServer network = new Network([]);
-else network = new Network(id, [oP.xy,oP.xscale,oP.yscale,oP.index]);
+host = hostSide.client;
+network = -1;
+network = new Network(id, [oP.x,oP.y,oP.xscale,oP.yscale,oP.index],host);
