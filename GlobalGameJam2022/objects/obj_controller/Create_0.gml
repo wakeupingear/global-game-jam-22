@@ -38,14 +38,9 @@ netObjs = ds_map_create();
 global.BUFFER_SMALL = buffer_create(64,buffer_fixed,1);
 if(isServer){
 	
-}
-else {
+}else {
 	socket = network_create_socket(network_socket_tcp);
-	client=socket
-	window_set_size(500, 500);
-	surface_resize(application_surface, 500, 500);
-	view_visible[0] = false;
-	view_visible[1] = true;
+	client=socket;
 }
 
 connect = function(){

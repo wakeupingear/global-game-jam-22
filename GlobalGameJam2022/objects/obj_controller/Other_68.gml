@@ -40,29 +40,35 @@ switch async_load[? "type"] {
 						var _token = buffer_read(_data,buffer_string);
 						var _id=netObjs[? _token];
 						if is_undefined(_id){ //broken
+							//Decode token
+							_arr = decodeTokenString(_token);
+							_tX = _arr[0];
+							_tY = _arr[1];
+							_tL = _arr[2];
+							_tO = _arr[3];
 							_id=instance_create_depth(_tX,_tY,_tL,_tO);
 							ds_map_add(netObjs,_token,_id);
 						}
 						//must match getObjProperty()
-						var _type = buffer_read(_data,buffer_u8);
+						var _type = buffer_read(_data,buffer_s16);
 						switch _type {
 							case oP.x:
-								_id.x=buffer_read(_data,buffer_u8);
+								_id.x=buffer_read(_data,buffer_s16);
 								break;
 							case oP.y:
-								_id.y=buffer_read(_data,buffer_u8);
+								_id.y=buffer_read(_data,buffer_s16);
 								break;
 							case oP.xscale:
-								_id.image_xscale=buffer_read(_data,buffer_u8);
+								_id.image_xscale=buffer_read(_data,buffer_s16);
 								break;
 							case oP.yscale:
-								_id.image_yscale=buffer_read(_data,buffer_u8);
+								_id.image_yscale=buffer_read(_data,buffer_s16);
 								break;
 							case oP.index:
-								_id.image_index=buffer_read(_data,buffer_u8);
+								_id.image_index=buffer_read(_data,buffer_s16);
 								break;
 							case oP.varReal:
-								variable_instance_set(_id,buffer_read(_data,buffer_string),buffer_read(_data,buffer_u8));
+								variable_instance_set(_id,buffer_read(_data,buffer_string),buffer_read(_data,buffer_s16));
 								break;
 							case oP.varString:
 								variable_instance_set(_id,buffer_read(_data,buffer_string),buffer_read(_data,buffer_string));

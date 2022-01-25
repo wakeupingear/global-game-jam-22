@@ -13,12 +13,24 @@ function Network(_id, _props,_host) constructor{
 	ds_map_add(obj_controller.netObjs,token,_id);
 	//show_message(ds_map_size(obj_controller.netObjs))
 	destroy = function() {
-		sendPacket([netData.objData,oP.destroy]);
+		sendPacket([netData.objData,oP.destroy,token]);
 	}
 }
 
 function tokenString(_x,_y,_l,_o){
-	return string(_x)+string(_y)+string(_l)+string(_o);
+	return string(_x)+" "+string(_y)+" "+string(_l)+" "+string(_o);
+}
+
+function decodeTokenString(_token){
+	var split1 = string_pos(" ", _token);
+	var split2 = string_pos_ext(" ", _token, split1+1);
+	var split3 = string_pos_ext(" ", _token, split2+1);
+	var arr = array_create(4);
+	arr[0] = int64(string_copy(_token, 0, split1));
+	arr[1] = int64(string_copy(_token, split1+1, split2-split1-1));
+	arr[2] = int64(string_copy(_token, split2+1, split3-split2-1));
+	arr[3] = int64(string_copy(_token, split3+1, string_length(_token)-split3));
+	return arr;
 }
 
 function sendPacket(array,buf=-1){
@@ -27,15 +39,7 @@ function sendPacket(array,buf=-1){
 		buffer_seek(buf,buffer_seek_start,0);
 		for (var i=0;i<array_length(array);i++){
 			if is_int64(array[i])||is_real(array[i]){
-				if sign(array[i])==1{
-					if array[i]<256 {
-						buffer_write(buf,buffer_u8,array[i]);
-					}
-					else buffer_write(buf,buffer_u16,array[i]);
-				}
-				else {
-					buffer_write(buf,buffer_s16,array[i]);
-				}
+				buffer_write(buf, buffer_s16, array[i]);
 			}
 			else if is_string(array[i]) buffer_write(buf,buffer_string,array[i]);
 		}
