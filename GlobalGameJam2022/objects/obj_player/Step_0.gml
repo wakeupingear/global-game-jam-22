@@ -7,7 +7,7 @@ if isHost(host) {
 		hsp = 0;
 	}
 
-	if(keyboard_check_pressed(ord("W")) && place_meeting(x, y+1, obj_solid)){
+	if(keyboard_check_direct(ord("W")) && place_meeting(x, y+1, obj_solid)){
 		vsp = -jumpPower;
 	}
 	vsp += grav;

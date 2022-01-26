@@ -16,7 +16,7 @@ switch async_load[? "type"] {
 		if !is_undefined(_data){
 			buffer_seek(_data,buffer_seek_start,0);
 			for (var _bufferInd=1;buffer_tell(_data)< _size;_bufferInd++){
-				var _header=buffer_read(_data,buffer_u8);
+				var _header=buffer_read(_data,buffer_s16);
 				switch _header {
 					case netData.connect:
 						onConnect(async_load);
@@ -25,17 +25,17 @@ switch async_load[? "type"] {
 						game_end();
 						break;
 					case netData.newRoom:
-						var _rm=buffer_read(_data,buffer_u8);
+						var _rm=buffer_read(_data,buffer_s16);
 						if _rm!=room{
 							sendNextRoom=false;
-							room_goto(buffer_read(_data,buffer_u8));
+							room_goto(buffer_read(_data,buffer_s16));
 						}
 						break;
 					case netData.objData:
-						//var _tX=buffer_read(_data,buffer_u8);
-						//var _tY=buffer_read(_data,buffer_u8);
-						//var _tL=buffer_read(_data,buffer_u8);
-						//var _tO=buffer_read(_data,buffer_u8);
+						//var _tX=buffer_read(_data,buffer_s16);
+						//var _tY=buffer_read(_data,buffer_s16);
+						//var _tL=buffer_read(_data,buffer_s16);
+						//var _tO=buffer_read(_data,buffer_s16);
 						//var _token=tokenString(_tX,_tY,_tL,_tO);
 						var _token = buffer_read(_data,buffer_string);
 						if(_token == ""){
