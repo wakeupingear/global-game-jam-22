@@ -38,6 +38,9 @@ switch async_load[? "type"] {
 						//var _tO=buffer_read(_data,buffer_u8);
 						//var _token=tokenString(_tX,_tY,_tL,_tO);
 						var _token = buffer_read(_data,buffer_string);
+						if(_token == ""){
+							break;
+						}
 						var _id=netObjs[? _token];
 						if is_undefined(_id){ //broken
 							//Decode token
