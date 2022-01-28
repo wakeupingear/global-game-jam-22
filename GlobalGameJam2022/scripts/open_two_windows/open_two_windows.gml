@@ -19,13 +19,6 @@ function open_two_windows() {
 		window_set_position(900, 260);
 		obj_controller.program = 1;
 	}
-	/* Not sure why this is here so i'm commenting it
-	if (parameter_count() > 3) {
-	    // <third instance>
-	    window_set_caption("P2")
-	
-		window_set_position(900, 260);
-	}*/
 
 
 }

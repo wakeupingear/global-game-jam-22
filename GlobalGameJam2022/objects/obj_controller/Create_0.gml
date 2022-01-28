@@ -7,7 +7,8 @@ enum netData {
 	connect,
 	disconnect,
 	newRoom,
-	objData
+	objData,
+	windowCoords
 }
 
 enum oP {
@@ -18,7 +19,7 @@ enum oP {
 	index,
 	varReal,
 	varString,
-	destroy
+	destroy,
 }
 
 enum hostSide {
@@ -31,14 +32,17 @@ program = 0;
 open_two_windows();
 #macro isServer (!obj_controller.program)
 
+otherWindowX = 0;
+otherWindowY = 0;
+lastWindowX = -1;
+lastWindowY = -1;
+
 client = -1;
 connected = false;
 sendNextRoom = false;
 netObjs = ds_map_create();
 global.BUFFER_SMALL = buffer_create(64,buffer_fixed,1);
-if(isServer){
-	
-}else {
+if(!isServer){
 	socket = network_create_socket(network_socket_tcp);
 	client=socket;
 }

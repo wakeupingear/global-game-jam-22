@@ -1,7 +1,19 @@
 ///Step
 
-camera_set_view_pos(view_camera[0], window_frame_get_x(), window_frame_get_y());
-camera_set_view_pos(view_camera[1], window_frame_get_x(), window_frame_get_y());
+//Camera things
+if(isServer && connected){
+	//If we're the host, send the client our window position
+	var wx = window_frame_get_x();
+	var wy = window_frame_get_y();
+	if(lastWindowX != wx || lastWindowY != wy){
+		sendPacket([netData.windowCoords, wx, wy]);
+	}
+	lastWindowX = wx;
+	lastWindowY = wy;
+}else{
+	//If we're the client, move the camera
+	camera_set_view_pos(view_camera[1], window_frame_get_x()-otherWindowX, window_frame_get_y()-otherWindowY);
+}
 window_frame_update();
 
 //End Step
@@ -25,4 +37,17 @@ for (var k = ds_map_find_first(netObjs); !is_undefined(k); k = ds_map_find_next(
 				_prop,_val]);
         }
     }
+}
+
+//Set window properties if they haven't been set yet
+if(window_command_get_active(window_command_maximize)){
+	window_command_set_active(window_command_maximize, false);
+	window_command_set_active(window_command_minimize, false);
+	if(isServer){
+		window_command_set_active(window_command_resize, false);
+	}else{
+		window_command_set_active(window_command_close, false);
+		window_frame_set_max_size(515,515);
+		window_set_topmost(true);
+	}
 }

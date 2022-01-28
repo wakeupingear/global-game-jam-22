@@ -78,6 +78,10 @@ switch async_load[? "type"] {
 								break;
 						}
 						break;
+					case(netData.windowCoords):
+						otherWindowX = buffer_read(_data, buffer_s16);
+						otherWindowY = buffer_read(_data, buffer_s16);
+						break;
 					default: break;
 				}
 				buffer_seek(_data,buffer_seek_start,min(_size,_bufferInd*512));
