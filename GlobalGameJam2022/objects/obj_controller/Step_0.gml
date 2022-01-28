@@ -1,5 +1,10 @@
 ///Step
 
+//Temp: open the other window if the space key is pressed
+if(isServer && !connected && keyboard_check_pressed(vk_space)){
+	open_two_windows();
+}
+
 //Camera things
 if(isServer && connected){
 	//If we're the host, send the client our window position
@@ -29,7 +34,7 @@ for (var k = ds_map_find_first(netObjs); !is_undefined(k); k = ds_map_find_next(
     for (var i=0;i<array_length(_id.network.data);i++){ //loop through properties
         var _prop = _id.network.data[i];
         var _val = getObjProperty(_id,_prop);
-        if _val!=_id.network.lastProps[i]{ //only send if property has changed
+        if(_val!=_id.network.lastProps[i] || updateAll){ //only send if property has changed
             _id.network.lastProps[i]=_val;
             sendPacket([netData.objData,
 				//_id.network.tokenArr[0],_id.network.tokenArr[1],_id.network.tokenArr[2],_id.network.tokenArr[3],
@@ -37,6 +42,7 @@ for (var k = ds_map_find_first(netObjs); !is_undefined(k); k = ds_map_find_next(
 				_prop,_val]);
         }
     }
+	updateAll = false;
 }
 
 //Set window properties if they haven't been set yet

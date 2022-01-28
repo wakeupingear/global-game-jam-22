@@ -39,4 +39,3 @@ if isHost(host) {
 		y += vsp;
 	}
 }
-show_debug_message("X: "+string(x)+"; Y: "+string(y))

@@ -1,24 +1,12 @@
 function open_two_windows() {
+	//Only let the first one create new windows
 	if (parameter_count() == 3) {
-	    ExecuteShell(parameter_string(0) + " " +
-	        parameter_string(1) + " " +
-	        parameter_string(2) + " " +
-			parameter_string(3) + " "+
-			parameter_string(4) + " -secondary" + " -tertiary", false, false)
-	    // <primary instance>
-	    window_set_caption("P1")
-	
-		window_set_position(200, 260);
-		obj_controller.program = 0;
+		//these are apparently necessary for running in the vm, but not in the release build
+		var args = "-game " + parameter_string(2);
+	}else{
+		//in the release build, we don't need any parameters
+		var args = "";
 	}
-
-	if (parameter_count() > 3) {
-	    // <secondary instance>
-	    window_set_caption("P2")
-	
-		window_set_position(900, 260);
-		obj_controller.program = 1;
-	}
-
-
+	var exe = get_program_pathname();
+	execute_shell(exe, "");
 }
