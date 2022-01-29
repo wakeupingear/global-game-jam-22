@@ -13,6 +13,7 @@ if(isServer){
 	}else if(state == States.dialogue){
 		//When the dialogue box no longer exists, the dialoge sequence is over and we can proceed
 		if(!instance_exists(oTextbox)){
+			
 			state = States.gameplay;
 			//Set properties for each floor
 			for(var i = 0; i < 3; i++){

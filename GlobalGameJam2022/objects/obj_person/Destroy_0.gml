@@ -2,6 +2,8 @@
 if clicked{ //destroy animation
 	shake(15,8);
 	
+	collectParticle(sPartDust,8);
+	
 	var _surf=surface_create(128,128);
 	surface_set_target(_surf);
 	draw(64-x,64-y);

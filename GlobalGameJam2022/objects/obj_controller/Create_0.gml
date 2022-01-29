@@ -48,6 +48,8 @@ sendNextRoom = false;
 netObjs = ds_map_create();
 updateAll = false;
 
+instance_create_depth(0,0,0,oMouse);
+
 global.roomTime=0;
 global.hudAlpha=0.95;
 global.hudColor=make_color_rgb(30,30,100);
@@ -72,6 +74,13 @@ if(server < 0){
 	program = 0;
 }
 #macro isServer (!obj_controller.program)
+
+if !isServer {
+	var _i=instance_create_depth(40,40,-1000,oModeToggle);
+	var _i=instance_create_depth(120,40,-1000,oModeToggle);
+	_i.windowMode=windowModes.thermal;
+}
+
 if (isServer) {
 	// <primary instance>
 	window_set_caption("Primary")

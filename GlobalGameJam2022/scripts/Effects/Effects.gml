@@ -139,3 +139,19 @@ function drawShake(_x,_y,surf){
 	surface_reset_target();
 	draw_surface(surf,camX()*(!isServer),camY()*(!isServer));
 }
+
+function collectParticle(spr,num){
+	var _num=num;
+	for (var i=0;i<_num;i++)
+	{
+		particle(x,y,depth+1,spr,0,{
+			dir: i*360/_num,
+			spd: 3,
+			xscale: 3,
+			yscale: 3,
+			alpha: 3,
+			fade: 0.15,
+			alwaysMove: true
+		});
+	}
+}
