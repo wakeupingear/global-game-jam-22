@@ -1,3 +1,5 @@
 
 //Move
-x += spd*dir;
+if(isServer){
+	x += spd*dir;
+}
