@@ -76,6 +76,16 @@ switch async_load[? "type"] {
 							case oP.varString:
 								variable_instance_set(_id,buffer_read(_data,buffer_string),buffer_read(_data,buffer_string));
 								break;
+							case oP.destroy:
+								ds_map_delete(netObjs,_token);
+								instance_destroy(_id);
+								break;
+							case oP.traits:
+								_id.traits[0]=buffer_read(_data,buffer_s16);
+								_id.traits[1]=buffer_read(_data,buffer_s16);
+								_id.traits[2]=buffer_read(_data,buffer_s16);
+								_id.traits[3]=buffer_read(_data,buffer_s16);
+								break;
 						}
 						break;
 					case(netData.windowCoords):

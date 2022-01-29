@@ -3,6 +3,8 @@
 #macro c_nearBlack make_color_rgb(25,25,25)
 #macro c_nearWhite make_color_rgb(230,230,230)
 
+randomize();
+
 enum netData {
 	null,
 	connect,
@@ -22,6 +24,7 @@ enum oP {
 	varReal,
 	varString,
 	destroy,
+	traits
 }
 
 enum hostSide {
@@ -47,6 +50,9 @@ updateAll = false;
 global.roomTime=0;
 global.hudAlpha=0.95;
 global.hudColor=make_color_rgb(30,30,100);
+
+//Shadows
+global.shadowMap = ds_map_create();
 
 //Load text
 global.langScript={};
@@ -82,6 +88,11 @@ onConnect = function(network_map){
 		client = network_map[? "socket"];
 		sendPacket([netData.connect]);
 		updateAll = true;
+		for (var k = ds_map_find_first(netObjs); !is_undefined(k); k = ds_map_find_next(netObjs, k)) {
+			var _id=netObjs[? k];
+			if !instance_exists(_id) continue;
+			if _id.network.sendData!=-1 _id.network.sendData();
+		}
 	}
 }
 
@@ -112,5 +123,3 @@ newPersonX = 0;
 sendNextRoom=false;
 if isTest room_goto(rm_test);
 else room_goto(rm_title);
-
-
