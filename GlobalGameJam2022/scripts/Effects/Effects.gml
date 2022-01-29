@@ -111,3 +111,31 @@ function animateProperty(obj,property,twerptype,startPos,endPos,step,destroyOPTI
 	if is_undefined(destroyOPTIONAL) destroyOPTIONAL=false;
 	ds_list_add(_p.lerpList,[obj,property,twerptype,startPos,endPos,0,step,1,destroyOPTIONAL]);
 }
+
+function shake(time,xAmp,yAmp=xAmp){
+	with obj_controller {
+		shakeTime=time;
+		shakeX=xAmp;
+		shakeY=yAmp;
+	}
+}	
+
+function drawBlur(quality,factor,surf){
+	if !surface_exists(surf) surf=surface_create(surface_get_width(application_surface),surface_get_height(application_surface));
+	surface_set_target(surf);
+	shader_set(shd_blur);
+	shader_set_uniform_f(shader_get_uniform(shd_blur,"u_quality"),quality);
+	shader_set_uniform_f(shader_get_uniform(shd_blur,"u_factor"),factor);
+	draw_surface(application_surface,0,0);
+	if shader_current()!=-1 shader_reset();
+	surface_reset_target();
+	draw_surface(surf,camX()*(!isServer),camY()*(!isServer));
+}
+function drawShake(_x,_y,surf){
+	if !surface_exists(surf) surf=surface_create(surface_get_width(application_surface),surface_get_height(application_surface));
+	surface_set_target(surf);
+	draw_surface(application_surface,0,0);
+	draw_surface(application_surface,_x,_y);
+	surface_reset_target();
+	draw_surface(surf,camX()*(!isServer),camY()*(!isServer));
+}

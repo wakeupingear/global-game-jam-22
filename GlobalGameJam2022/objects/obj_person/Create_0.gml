@@ -55,6 +55,12 @@ network.sendData = function(){
 network.sendData();
 
 //Variables
+enum level {
+	Heaven,
+	Hell,
+	Purgatory
+}
+clicked=false;
 if(isServer){
 	flr = y;
 	spd = obj_controller.flrSpds[flr];
@@ -63,19 +69,14 @@ if(isServer){
 	y = obj_controller.flrYs[flr];
 }
 
-
-
-
-
-
 checkShadow();
 draw = function(_x,_y){
-	if(!accessoryOnTop[Traits.accessory]){
-		draw_sprite(accessorySprites[traits[Traits.accessory]], 0, x+_x, y+_y);
+	if(!accessoryOnTop[traits[Traits.accessory]]){
+		draw_sprite_ext(accessorySprites[traits[Traits.accessory]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);
 	}
 	draw_sprite_ext(clothesSprites[traits[Traits.clothes]], 0, x+_x, y+_y, image_xscale, image_yscale, image_angle, colors[traits[Traits.color]], image_alpha);
-	draw_sprite(headSprites[traits[Traits.head]], 0, x+_x, y+_y);
+	draw_sprite_ext(headSprites[traits[Traits.head]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);
 	if(accessoryOnTop[traits[Traits.accessory]]){
-		draw_sprite(accessorySprites[traits[Traits.accessory]], 0, x+_x, y+_y);
+		draw_sprite_ext(accessorySprites[traits[Traits.accessory]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);
 	}
 }

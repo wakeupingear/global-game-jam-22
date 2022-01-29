@@ -65,7 +65,7 @@ if textUpdated&&alarm[0]==-1&&sentence!=""
 }
 
 //draw everything
-//surface_set_target(global.guiSurf);
+surface_set_target(global.guiSurf);
 draw_set_alpha(max(0,image_alpha-(1-nameAlpha)));
 
 draw_set_alpha(image_alpha);
@@ -93,5 +93,5 @@ if question
 	drawIcon(0,guiX(),0,guiY());
 	gpu_set_blendmode(bm_normal);
 }
-//surface_reset_target();
+surface_reset_target();
 draw_set_alpha(1);

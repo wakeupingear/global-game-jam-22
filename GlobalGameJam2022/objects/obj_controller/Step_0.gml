@@ -58,6 +58,7 @@ if(isServer){
 				if(!isObjective){
 					incorrectGuesses++;
 				}
+				target.clicked=true;
 				instance_destroy(target);
 			}
 		}
@@ -77,7 +78,6 @@ if(isServer){
 		}
 	}
 }
-show_debug_message(state);
 
 //Temp: open the other window if the space key is pressed
 if(isServer && !connected && keyboard_check_pressed(vk_space)){

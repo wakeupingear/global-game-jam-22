@@ -35,7 +35,8 @@ enum hostSide {
 
 enum windowModes {
 	normal,
-	xRay
+	xRay,
+	thermal
 }
 windowMode = windowModes.normal;
 windowSurf=-1;
@@ -101,6 +102,12 @@ otherWindowX = 0;
 otherWindowY = 0;
 lastWindowX = -1;
 lastWindowY = -1;
+shakeX=0;
+shakeY=0;
+currentShakeX=0;
+currentShakeY=0;
+shakeTime=0;
+global.guiSurf=-1;
 
 //Game stuff
 enum States{

@@ -4,6 +4,7 @@ if(isServer){
 
 	//Move
 	x += spd*dir;
+	image_xscale=dir;
 	
 	//Check if we've passed the bound and we're donezo
 	if((dir == 1 && x > rightBound) || (dir == -1 && x < leftBound)){
@@ -12,7 +13,7 @@ if(isServer){
 	}
 	
 	//Walking particles
-	var _scale=1+(global.roomTime%6==0);
-	particle(x-image_xscale*(2+irandom(2)),y-irandom(2)+64,depth-1,spr_solidWhite,0,{spd:6,dir:90+90*image_xscale-image_xscale*irandom_range(0,50),alpha:1.5,fade:0.1,xscale: _scale,yscale: _scale});
+	var _scale=1+(global.roomTime%18==0);
+	particle(x-dir*(2+irandom(2)),y-irandom(2)+64,depth+1,sPartDust,0,{spd:4,dir:90+90*dir-dir*irandom_range(0,50),alpha:1.5,fade:0.15,xscale: _scale,yscale: _scale});
 }
 
