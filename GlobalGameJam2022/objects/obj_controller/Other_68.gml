@@ -82,6 +82,9 @@ switch async_load[? "type"] {
 						otherWindowX = buffer_read(_data, buffer_s16);
 						otherWindowY = buffer_read(_data, buffer_s16);
 						break;
+					case netData.windowMode:
+						windowMode=buffer_read(_data,buffer_s16);
+						break;
 					default: break;
 				}
 				buffer_seek(_data,buffer_seek_start,min(_size,_bufferInd*512));
