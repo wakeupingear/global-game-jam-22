@@ -12,7 +12,7 @@ function Network(_id, _props,_host) constructor{
 	if ds_map_exists(obj_controller.netObjs,token) show_error("DUPLICATE KEY: "+token+", "+object_get_name(_id.object_index),true);
 	ds_map_add(obj_controller.netObjs,token,_id);
 	destroy = function() {
-		sendPacket([netData.objData,oP.destroy,token]);
+		sendPacket([netData.objData,token,oP.destroy]);
 	}
 }
 
