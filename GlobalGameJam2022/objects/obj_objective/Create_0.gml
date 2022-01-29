@@ -7,17 +7,12 @@ accessorySprites = [spr_purse, spr_briefcase, spr_wings, spr_pitchfork];
 accessoryOnTop = [true, true, false, true];
 
 //Properties of the objective
-complete = false;
 enabledTraits = array_create(traitCount, false);
 objectiveTraits = array_create(traitCount, 0);
 
 //For testing: set up a objective that wants red people w/ briefcases
-enabledTraits[Traits.accessory] = true;
-objectiveTraits[Traits.accessory] = Accessory.briefcase;
 enabledTraits[Traits.color] = true;
-objectiveTraits[Traits.color] = Colors.red;
-enabledTraits[Traits.head] = true;
-objectiveTraits[Traits.head] = Head.brunetteWoman;
+objectiveTraits[Traits.color] = irandom_range(0, 6);
 
 
 function personFits(p){
@@ -29,4 +24,15 @@ function personFits(p){
 		}
 	}
 	return true;
+}
+
+//Called when it is successfully completed
+function success(){
+	instance_destroy();
+}
+
+//Called when it is failed
+function failure(){
+	obj_controller.failedObjectives++;
+	instance_destroy();
 }

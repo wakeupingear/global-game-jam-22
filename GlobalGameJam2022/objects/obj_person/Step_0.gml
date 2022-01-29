@@ -7,6 +7,7 @@ if(isServer){
 	
 	//Check if we've passed the bound and we're donezo
 	if((dir == 1 && x > rightBound) || (dir == -1 && x < leftBound)){
+		obj_controller.personExits(id);
 		instance_destroy();
 	}
 	

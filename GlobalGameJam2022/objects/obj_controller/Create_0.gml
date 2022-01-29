@@ -118,6 +118,29 @@ for(var i = 0; i < 3; i++){
 	fy += 128;
 }
 newPersonX = 0;
+wave = 1;
+
+//Used to create the objectives of a given wave
+function makeObjectives(w){
+	objCount = 3;
+	objs = array_create(objCount);
+	for(var i = 0; i < objCount; i++){
+		objs[i] = instance_create_layer(450 + 250*i, 650, "Instances", obj_objective);
+	}
+	return objs;
+}
+
+//Called by a person when they exit the game
+function personExits(p){
+	for(var i = 0; i < array_length(objectives); i++){
+		if(objectives[i].personFits(p)){
+			objectives[i].failure();
+			array_delete(objectives, i, 1);
+			failedObjectives++;
+			return;
+		}
+	}
+}
 
 //Go to the next room
 sendNextRoom=false;

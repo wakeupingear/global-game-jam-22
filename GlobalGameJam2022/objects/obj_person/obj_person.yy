@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_head_0",
-    "path": "sprites/spr_head_0/spr_head_0.yy",
+    "name": "spr_personHitbox",
+    "path": "sprites/spr_personHitbox/spr_personHitbox.yy",
   },
   "solid": false,
   "visible": true,
