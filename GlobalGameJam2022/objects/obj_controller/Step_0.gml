@@ -23,10 +23,7 @@ if(isServer){
 			}
 			waveTimer = 20*60;
 			//Create objectives
-			/*objectiveCount = 1;
-			for(var i = 0; i < objectiveCount; i++){
-				objectives[i] = instance_create_layer(384 + 128*i, 672, "Instances", obj_objective);
-			}*/
+			objectives = makeObjectives(wave);
 		}
 	}else if(state == States.gameplay){
 		//Create people
@@ -43,9 +40,30 @@ if(isServer){
 				}
 			}
 		}
+		incorrectGuesses = 0;
+		failedObjectives = 0;
 		//Check for click
+		if(mouse_check_button_pressed(mb_left)){
+			var target = collision_point(mouse_x, mouse_y, obj_person,1,true);
+			if(target != noone){
+				isObjective = false;
+				for(var i = 0; i < array_length(objectives); i++){
+					if(objectives[i].personFits(target)){
+						isObjective = true;
+						objectives[i].success();
+						array_delete(objectives, i, 1);
+						break;
+					}
+				}
+				if(!isObjective){
+					incorrectGuesses++;
+				}
+				instance_destroy(target);
+			}
+		}
 		//Check if all people are gone
 		if(waveTimer == 0 && !instance_exists(obj_person)){
+			wave++;
 			state = States.rank;
 		}
 	}else if(state == States.rank){
