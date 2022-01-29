@@ -40,7 +40,6 @@ enum Accessory{
 accessorySprites = [spr_purse, spr_briefcase, spr_wings, spr_pitchfork];
 accessoryOnTop = [true, true, false, true];
 
-
 //Variables
 spd = 1;
 dir = 1;
@@ -56,3 +55,15 @@ network.sendData = function(){
 	if isHost(host) sendPacket([netData.objData,network.token,oP.traits,traits[0],traits[1],traits[2],traits[3]]);
 }
 network.sendData();
+
+checkShadow();
+draw = function(_x,_y){
+	if(!accessoryOnTop[Traits.accessory]){
+		draw_sprite(accessorySprites[traits[Traits.accessory]], 0, x+_x, y+_y);
+	}
+	draw_sprite_ext(clothesSprites[traits[Traits.clothes]], 0, x+_x, y+_y, image_xscale, image_yscale, image_angle, colors[traits[Traits.color]], image_alpha);
+	draw_sprite(headSprites[traits[Traits.head]], 0, x+_x, y+_y);
+	if(accessoryOnTop[traits[Traits.accessory]]){
+		draw_sprite(accessorySprites[traits[Traits.accessory]], 0, x+_x, y+_y);
+	}
+}

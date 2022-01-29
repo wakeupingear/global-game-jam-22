@@ -51,6 +51,9 @@ global.roomTime=0;
 global.hudAlpha=0.95;
 global.hudColor=make_color_rgb(30,30,100);
 
+//Shadows
+global.shadowMap = ds_map_create();
+
 //Load text
 global.langScript={};
 loadStringJson("text");
