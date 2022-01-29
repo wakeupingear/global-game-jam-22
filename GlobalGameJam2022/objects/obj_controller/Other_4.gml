@@ -11,3 +11,6 @@ if(!isServer){
 	view_visible[0] = false;
 	view_visible[1] = true;
 }
+
+//Reset room time
+global.roomTime=0;

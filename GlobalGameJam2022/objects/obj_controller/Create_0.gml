@@ -1,7 +1,7 @@
 /// @description Startup
-
-
 #macro isTest (os_get_config()=="Test")
+#macro c_nearBlack make_color_rgb(25,25,25)
+#macro c_nearWhite make_color_rgb(230,230,230)
 
 enum netData {
 	null,
@@ -9,7 +9,8 @@ enum netData {
 	disconnect,
 	newRoom,
 	objData,
-	windowCoords
+	windowCoords,
+	windowMode
 }
 
 enum oP {
@@ -29,13 +30,28 @@ enum hostSide {
 	both
 }
 
+enum windowModes {
+	normal,
+	xRay
+}
+windowMode = windowModes.normal;
+windowSurf=-1;
+
 //Server variables
 client = -1;
 connected = false;
 sendNextRoom = false;
 netObjs = ds_map_create();
 updateAll = false;
-global.BUFFER_SMALL = buffer_create(64,buffer_fixed,1);
+
+global.roomTime=0;
+global.hudAlpha=0.95;
+global.hudColor=make_color_rgb(30,30,100);
+
+//Load text
+global.langScript={};
+loadStringJson("text");
+draw_set_font(fn_1)
 
 //Figure out which window we are
 server = network_create_server(network_socket_tcp,32860,1);
@@ -44,6 +60,7 @@ if(server < 0){
 	socket = network_create_socket(network_socket_tcp);
 	client=socket;
 	network_connect_async(socket,"127.0.0.1",32860);
+	windowMode = windowModes.xRay;
 }else{
 	program = 0;
 }
