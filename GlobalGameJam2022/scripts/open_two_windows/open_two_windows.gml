@@ -8,5 +8,5 @@ function open_two_windows() {
 		var args = "";
 	}
 	var exe = get_program_pathname();
-	execute_shell(exe, "");
+	execute_shell(exe, args);
 }
