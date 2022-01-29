@@ -13,7 +13,7 @@ function Network(_id, _props,_host) constructor{
 	ds_map_add(obj_controller.netObjs,token,_id);
 	//show_message(ds_map_size(obj_controller.netObjs))
 	destroy = function() {
-		sendPacket([netData.objData,oP.destroy,token]);
+		sendPacket([netData.objData,token,oP.destroy]);
 	}
 }
 

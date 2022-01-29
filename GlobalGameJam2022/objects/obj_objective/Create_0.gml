@@ -7,6 +7,7 @@ accessorySprites = [spr_purse, spr_briefcase, spr_wings, spr_pitchfork];
 accessoryOnTop = [true, true, false, true];
 
 //Properties of the objective
+complete = false;
 enabledTraits = array_create(traitCount, false);
 objectiveTraits = array_create(traitCount, 0);
 

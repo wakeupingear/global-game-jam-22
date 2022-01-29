@@ -1,7 +1,11 @@
 {
-    "test": [
-        120,
-        "THIS IS *GOD*",
-        "This is another test of the ^DIALOGUE SYSTEM!!!!!!^"
+    "d1": [
+        "First Dialogue"
+    ],
+    "d2": [
+        "Second Dialogue"
+    ],
+    "end": [
+        "Final Dialogue"
     ]
 }
