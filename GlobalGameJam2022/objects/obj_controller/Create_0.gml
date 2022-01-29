@@ -91,6 +91,23 @@ otherWindowY = 0;
 lastWindowX = -1;
 lastWindowY = -1;
 
+//Game stuff
+enum States{
+	setup,
+	dialogue,
+	gameplay,
+	rank
+}
+state = States.setup;
+dialogueSequence = ["d1", "d2"];
+dialogueIndex = 0;
+var fy = 256;
+for(var i = 0; i < 3; i++){
+	flrYs[i] = fy;
+	fy += 128;
+}
+newPersonX = 0;
+
 //Go to the next room
 sendNextRoom=false;
 if isTest room_goto(rm_test);

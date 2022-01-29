@@ -1,5 +1,7 @@
 ///Enums and Arrays for Traits
 #macro traitCount 4
+#macro leftBound 468
+#macro rightBound (room_width - leftBound)
 enum Traits{
 	head,
 	clothes,
@@ -40,16 +42,24 @@ enum Accessory{
 accessorySprites = [spr_purse, spr_briefcase, spr_wings, spr_pitchfork];
 accessoryOnTop = [true, true, false, true];
 
+//Networking
+host = hostSide.server;
+network = -1;
+network = new Network(id, [oP.x,oP.y,oP.xscale,oP.yscale,oP.index],host);
 
 //Variables
-spd = 1;
-dir = 1;
+if(isServer){
+	flr = y;
+	spd = obj_controller.flrSpds[flr];
+	dir = obj_controller.flrDirs[flr];
+	x = dir == 1 ? leftBound : rightBound;
+	y = obj_controller.flrYs[flr];
+}
+
 
 //Randomly pick traits
 traits = [irandom_range(0, 5), irandom_range(0, 2), irandom_range(0, 6), irandom_range(0, 3)];
 
 
-host = hostSide.server;
-network = -1;
-network = new Network(id, [oP.x,oP.y,oP.xscale,oP.yscale,oP.index],host);
+
 
