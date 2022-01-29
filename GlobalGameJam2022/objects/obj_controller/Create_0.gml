@@ -68,7 +68,7 @@ if(server < 0){
 if (isServer) {
 	// <primary instance>
 	window_set_caption("Primary")
-	window_set_position(200, 260);
+	window_set_position(160, 90);
 }else{
 	// <secondary instance>
 	window_set_caption("Secondary")
@@ -95,3 +95,5 @@ lastWindowY = -1;
 sendNextRoom=false;
 if isTest room_goto(rm_test);
 else room_goto(rm_title);
+
+

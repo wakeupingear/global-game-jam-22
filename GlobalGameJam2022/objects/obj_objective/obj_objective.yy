@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_head_0",
-    "path": "sprites/spr_head_0/spr_head_0.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
@@ -32,7 +29,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_person",
+  "name": "obj_objective",
   "tags": [],
   "resourceType": "GMObject",
 }
