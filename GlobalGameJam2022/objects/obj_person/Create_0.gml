@@ -51,5 +51,8 @@ traits = [irandom_range(0, 5), irandom_range(0, 2), irandom_range(0, 6), irandom
 
 host = hostSide.server;
 network = -1;
-network = new Network(id, [oP.x,oP.y,oP.xscale,oP.yscale,oP.index],host);
-
+network = new Network(id, [oP.x,oP.y,oP.xscale,oP.yscale,oP.index],host); 
+network.sendData = function(){
+	if isHost(host) sendPacket([netData.objData,network.token,oP.traits,traits[0],traits[1],traits[2],traits[3]]);
+}
+network.sendData();

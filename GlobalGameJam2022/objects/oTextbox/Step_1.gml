@@ -1,6 +1,6 @@
 /// @description Text
-xPos=mouse_x-sprite_width/2
-yPos=mouse_y-sprite_width/5
+//xPos=mouse_x-sprite_width/2
+//yPos=mouse_y-sprite_width/5
 textboxTime = min(textboxTime+1,200);
 if !wait{
 if mode>-1&&mode<2
