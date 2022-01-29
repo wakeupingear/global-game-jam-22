@@ -15,6 +15,8 @@ enabledTraits[Traits.accessory] = true;
 objectiveTraits[Traits.accessory] = Accessory.briefcase;
 enabledTraits[Traits.color] = true;
 objectiveTraits[Traits.color] = Colors.red;
+enabledTraits[Traits.head] = true;
+objectiveTraits[Traits.head] = Head.brunetteWoman;
 
 
 function personFits(p){
