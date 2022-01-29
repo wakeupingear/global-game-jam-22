@@ -1,0 +1,3 @@
+
+//Move
+x += spd*dir;
