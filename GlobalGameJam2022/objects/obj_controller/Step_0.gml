@@ -53,7 +53,8 @@ if(isServer){
 		if(true){
 			state = States.dialogue;
 			//Start whatever conversation comes next
-			conversation(dialogueSequence[dialogueIndex]);
+			var dialogueToken = dialogueIndex >= array_length(dialogueSequence) ? "end" : dialogueSequence[dialogueIndex];
+			conversation(dialogueToken);
 			dialogueIndex++;
 		}
 	}
