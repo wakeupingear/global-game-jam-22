@@ -74,6 +74,8 @@ for(var i = 0; i < traitCount; i++){
 			case(Xray.phone): xString = "With a Phone"; break;
 			case(Xray.teeth): xString = "With Metal Teeth"; break;
 			}
+			draw_set_color(c_black);
+			draw_text(drawX, drawY, xString);
 			break;
 		case(Traits.soul):
 			var sString = "";

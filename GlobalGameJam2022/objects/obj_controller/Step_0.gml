@@ -91,7 +91,7 @@ if(isServer&&room!=rm_title){
 			//Calculate rank change
 			displayRank = rank;
 			var rankChange = 0.2*(correctGuesses/objectiveCount) - 0.1*incorrectGuesses;
-			rank += rankChange;
+			rank = clamp(rank+rankChange, 0, 1);
 			//Go to the next state
 			wave++;
 			state = States.rank;
@@ -115,8 +115,12 @@ if(isServer&&room!=rm_title){
 			state = States.dialogue;
 			goalRankDisplayScale = 0;
 			//Start whatever conversation comes next
-			var dialogueToken = dialogueIndex >= array_length(dialogueSequence) ? "end" : dialogueSequence[dialogueIndex];
-			conversation(dialogueToken);
+			if(dialogueIndex < array_length(dialogueSequence)){
+				conversation(dialogueSequence[dialogueIndex]);
+			}else if(rank == 1 && !congratulatedPlayer){
+				congratulatedPlayer = true;
+				conversation("end");
+			}
 			dialogueIndex++;
 		}
 	}
@@ -132,6 +136,10 @@ if(isServer&&room!=rm_title){
 //Temp: open the other window if the space key is pressed
 if(isTest&&isServer && !connected && keyboard_check_pressed(vk_space)){
 	open_two_windows();
+}
+if(keyboard_check_pressed(vk_enter)){
+	dialogueIndex = 20;
+	rank = 0.95;
 }
 
 //Move the camera

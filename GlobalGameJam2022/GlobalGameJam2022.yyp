@@ -13,7 +13,7 @@
     {"id":{"name":"spr_tshirt_green","path":"sprites/spr_tshirt_green/spr_tshirt_green.yy",},"order":28,},
     {"id":{"name":"spr_dress_green","path":"sprites/spr_dress_green/spr_dress_green.yy",},"order":11,},
     {"id":{"name":"spr_smoke_small","path":"sprites/spr_smoke_small/spr_smoke_small.yy",},"order":16,},
-    {"id":{"name":"spr_xray_gun","path":"sprites/spr_xray_gun/spr_xray_gun.yy",},"order":3,},
+    {"id":{"name":"spr_xray_none","path":"sprites/spr_xray_none/spr_xray_none.yy",},"order":3,},
     {"id":{"name":"shd_solidPerson","path":"shaders/shd_solidPerson/shd_solidPerson.yy",},"order":2,},
     {"id":{"name":"spr_head8","path":"sprites/spr_head8/spr_head8.yy",},"order":23,},
     {"id":{"name":"sprite_pragma","path":"scripts/sprite_pragma/sprite_pragma.yy",},"order":2,},
@@ -62,7 +62,7 @@
     {"id":{"name":"spr_blurHeaven","path":"sprites/spr_blurHeaven/spr_blurHeaven.yy",},"order":22,},
     {"id":{"name":"spr_tshirt_red","path":"sprites/spr_tshirt_red/spr_tshirt_red.yy",},"order":31,},
     {"id":{"name":"obj_rankDisplay","path":"objects/obj_rankDisplay/obj_rankDisplay.yy",},"order":9,},
-    {"id":{"name":"spr_xray_none","path":"sprites/spr_xray_none/spr_xray_none.yy",},"order":4,},
+    {"id":{"name":"spr_xray_gun","path":"sprites/spr_xray_gun/spr_xray_gun.yy",},"order":4,},
     {"id":{"name":"spr_altSolid","path":"sprites/spr_altSolid/spr_altSolid.yy",},"order":2,},
     {"id":{"name":"libdlgmodule","path":"extensions/libdlgmodule/libdlgmodule.yy",},"order":2,},
     {"id":{"name":"XButton","path":"sprites/XButton/XButton.yy",},"order":34,},
@@ -140,6 +140,7 @@
   ],
   "isDnDProject": false,
   "isEcma": false,
+  "tutorialPath": "",
   "configs": {
     "name": "Default",
     "children": [
@@ -198,10 +199,10 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"ExecuteShell.so.zip","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"window_frame.html","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"window_frame.html","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"text.json","resourceType":"GMIncludedFile",},
+    {"CopyToMask":3035461389054378222,"filePath":"datafiles","resourceVersion":"1.0","name":"text.json","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.1.0.609",
+    "IDEVersion": "2.3.7.606",
   },
   "resourceVersion": "1.4",
   "name": "GlobalGameJam2022",

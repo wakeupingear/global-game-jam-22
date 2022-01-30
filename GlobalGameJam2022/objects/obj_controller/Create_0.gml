@@ -126,7 +126,7 @@ enum States{
 	rank
 }
 state = States.setup;
-dialogueSequence = ["d1", "d2", "d3", "d4", "d5"];
+dialogueSequence = ["d1", "d2", "d3", "d4", "d5", "d6", "d7"];
 dialogueIndex = 0;
 flrYs=[84,292,532];
 peopleCount = 0;
@@ -136,6 +136,7 @@ displayRank = rank;
 rankDisplayScale = 0;
 goalRankDisplayScale = 0;
 speedBoost = 1;
+congratulatedPlayer = false;
 
 //Used to create the objectives of a given wave
 function makeObjectives(w){
@@ -168,5 +169,5 @@ function personExits(p){
 
 //Go to the next room
 sendNextRoom=false;
-if isTest room_goto(rm_game);
+if isTest||!isServer room_goto(rm_game);
 else room_goto(rm_title);
