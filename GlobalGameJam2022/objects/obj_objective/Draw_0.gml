@@ -55,6 +55,15 @@ for(var i = 0; i < traitCount; i++){
 			}
 			draw_text(drawX, drawY, "with " + cString);
 			break;
+		case(Traits.thermals):
+			var tString = "";
+			switch(objectiveTraits[i]){
+			case(thermals.hot): draw_set_color(c_red); tString = "burning hot"; break;
+			case(thermals.medium): draw_set_color(c_orange); tString = "normal temp"; break;
+			case(thermals.cold): draw_set_color(c_green); tString = "icy cold"; break;
+			}
+			draw_text(drawX, drawY, tString);
+			break;
 		}
 		
 		//Reset draw stuff

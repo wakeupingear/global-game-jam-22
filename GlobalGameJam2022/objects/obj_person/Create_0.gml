@@ -6,7 +6,10 @@ enum Traits{
 	head,
 	clothes,
 	color,
-	accessory
+	accessory,
+	thermals,
+	xray,
+	soul
 }
 enum Head{
 	baldMan,
