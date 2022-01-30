@@ -53,6 +53,12 @@ thermalColors=[
 	[color_get_red(c_green)/255,color_get_green(c_green)/255,color_get_blue(c_green)/255],
 ];
 
+soulColors=[
+	[color_get_red(c_red)/255,color_get_green(c_red)/255,color_get_blue(c_red)/255],
+	[color_get_red(c_white)/255,color_get_green(c_white)/255,color_get_blue(c_white)/255],
+	[color_get_red(c_blue)/255,color_get_green(c_blue)/255,color_get_blue(c_blue)/255],
+];
+
 enum Xray{
 	none,
 	gun,
@@ -84,7 +90,7 @@ if(isServer){
 			traits = [irandom_range(0, 9), irandom_range(0, 2), irandom_range(0, 6),
 				irandom(array_length(thermalColors)-1), //window mode 1
 				irandom_range(0, 4), //window 2
-				0 //window 3
+				irandom(2) //window 3
 			];
 			bad = false;
 			for(var i = 0; i < obj_controller.objectiveCount; i++){
@@ -145,23 +151,26 @@ if(isServer){
 createShadow(0.4);
 yStartOffset=irandom(100);
 draw = function(_x,_y){
-	if !isServer {
-		if obj_controller.windowMode==windowModes.thermal shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),
-			thermalColors[traits[Traits.thermals]][0],thermalColors[traits[Traits.thermals]][1],thermalColors[traits[Traits.thermals]][2]);
-		else if obj_controller.windowMode==windowModes.xRay shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),0,0,0);
-		//else if obj_controller.windowMode==windowModes.soul shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),1,1,1);
-	}
 	if(!isServer && obj_controller.windowMode == windowModes.soul){
 		var alpha1 = abs(smoke_image_index-100)/100;
 		var alpha2 = (100-abs(smoke_image_index-100))/100;
+		shader_set_uniform_f(shader_get_uniform(shd_soulSmoke,"u_color"),
+			soulColors[traits[Traits.soul]][0],soulColors[traits[Traits.soul]][1],soulColors[traits[Traits.soul]][2]);
 		draw_sprite_ext(spr_smoke_small, floor(smoke_image_index), x+_x, y+_y,.5,.5,0,c_white,alpha2);
 		draw_sprite_ext(spr_smoke_small, floor(smoke_image_index)+100, x+_x, y+_y,.5,.5,0,c_white,alpha1);
-	}else{
+	}
+	else {
+		if !isServer {
+			if obj_controller.windowMode==windowModes.thermal shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),
+				thermalColors[traits[Traits.thermals]][0],thermalColors[traits[Traits.thermals]][1],thermalColors[traits[Traits.thermals]][2]);
+			else if obj_controller.windowMode==windowModes.xRay shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),0,0,0);
+			//else if obj_controller.windowMode==windowModes.soul shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),1,1,1);
+		}
 		draw_sprite_ext(clothesSprites[traits[Traits.clothes]][traits[Traits.color]], image_index, x+_x, y+_y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
 		draw_sprite_ext(headSprites[traits[Traits.head]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);
-	}
-	if(!isServer && obj_controller.windowMode == windowModes.xRay){
-		shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),1,1,1);
-		draw_sprite_ext(xRaySprites[traits[Traits.xray]], image_index, x+_x, y+_y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+		if(!isServer && obj_controller.windowMode == windowModes.xRay){
+			shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),1,1,1);
+			draw_sprite_ext(xRaySprites[traits[Traits.xray]], image_index, x+_x, y+_y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+		}
 	}
 }
