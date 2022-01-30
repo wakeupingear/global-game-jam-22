@@ -13,16 +13,25 @@
         "Only click on people who match every category in a wanted poster"
     ],
     "d3": [
-        "Some intruders can only be identified by their body temperature",
-        "Use this new dual window technolgy to see body temperature"
+        "Some troublemakers can only be identified by their body temperature",
+        "Use this new ^dual window technolgy^ to see body temperature"
     ],
     "d4": [
         "To identify these intruders, make sure they have the right clothes AND temperature"
     ],
     "d5": [
-        "Some impostors can be identified by their personal belongings",
+        "Some troublemakers can be identified by their personal belongings",
         "$addCamera",
         "In your thermal camera, press the new button to switch to x-ray mode"
+    ],
+    "d6": [
+        "Now, you will need to use both thermal and x-ray mode",
+        "Press the camera buttons to switch between them"
+    ],
+    "d7": [
+        "Now, we will bestow upon you our final invention: the ^soul viewer^.",
+        "$addCamera",
+        "With this tool, you can see the quality of each soul"
     ],
     "end": [
         "Final Dialogue"
