@@ -21,6 +21,10 @@ createVars = function(){
 	// Particles
 	partSys = part_system_create();
 
+	myLevel=getLevel(y);
+	if myLevel==level.Heaven fadeColor=make_color_rgb(230,230,230);
+	else if myLevel==level.Purgatory fadeColor=make_color_rgb(230,230,230);
+	else fadeColor=c_black;
 	partDust = part_type_create(); // Create dust particle
 	part_type_sprite(partDust, sPartDust, 0, 0, 0);
 	part_type_color1(partDust, fadeColor);

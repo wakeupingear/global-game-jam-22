@@ -30,14 +30,17 @@ function commandProcess(command){
 			diag+=2;
 			return command[diag-1];
 		}
+		else if string_char_at(command[diag],1)=="#"{
+			diag++;
+		}
 		else if string_char_at(command[diag],1)=="$"{
 			var _data=string_replace_all(string_copy(command[diag],2,string_length(command[diag])-1)," ","");
 			
 			var _val=0;
-			diag+=2;
-			if diag-1<array_length(command) 
+			diag++;
+			if diag<array_length(command) 
 			{
-				_val=command[diag-1];
+				_val=command[diag];
 			}
 			
 			var _obj=string_copy(_data,1,string_pos(".",_data)-1);
@@ -61,11 +64,24 @@ function commandProcess(command){
 				var _scr=asset_get_index(_name);
 				if script_exists(_scr) script_execute(_scr)
 				else switch _name{
+					case "goto":
+						if _val=="test"&&!isTest {
+							diag++;
+							break;
+						}
+						var _ind=diag;
+						_val="#"+_val;
+						while _ind<array_length(command)&&command[_ind]!=_val _ind++;
+						if _ind!=array_length(command) diag=_ind+1;
+						break;
 					case "font":
-						font=_scr;
+						font=asset_get_index(_val);
 						break;
 					case "addCamera":
 						sendPacket([netData.newUIButton]);
+						break;
+					case "openTransition":
+						with obj_roomChange open=true;
 						break;
 					default:
 						with _obj variable_instance_set(id,_name,_val);
@@ -75,7 +91,6 @@ function commandProcess(command){
 						}
 						break;
 				}
-				diag--;
 			}
 		}
 		else {
@@ -96,7 +111,7 @@ function processTextVariables(text)
 	return text;
 }
 
-function conversation(textData,_x=200,_y=510){
+function conversation(textData,_x=200,_y=570){
 	//var _alreadyOpen=global.menuOpen;
 	//global.menuOpen=true;
 	if instance_exists(oTextbox)&&oTextbox.mode>-1 var _t=instance_find(oTextbox,0);

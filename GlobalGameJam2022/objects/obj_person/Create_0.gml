@@ -110,6 +110,15 @@ if(isServer){
 	}
 }
 
+
+if(isServer){
+	flr = y;
+	spd = obj_controller.flrSpds[flr];
+	dir = obj_controller.flrDirs[flr];
+	sprite_index = clothesSprites[traits[Traits.clothes]][traits[Traits.color]];
+	image_xscale = dir;
+}
+
 //Networking
 host = hostSide.server;
 network = -1;
@@ -127,16 +136,8 @@ enum level {
 }
 clicked=false;
 if(isServer){
-	flr = y;
-	spd = obj_controller.flrSpds[flr];
-	dir = obj_controller.flrDirs[flr];
 	x = dir == 1 ? leftBound : rightBound;
 	y = obj_controller.flrYs[flr];
-}
-
-if(isServer){
-	sprite_index = clothesSprites[traits[Traits.clothes]][traits[Traits.color]];
-	image_xscale = dir;
 }
 
 createShadow(0.4);
