@@ -17,6 +17,8 @@ if clicked{ //destroy animation
 	var _t=instance_create_depth(x,y,depth,obj_thanos);
 	_t.sprite_index=_spr;
 	_t.createVars(id);
+	var _snd=audio_play_sound(snd_swoosh,1,false);
+	audio_sound_gain(_snd,0.5,0);
 }
 
 if(isHost(host)){

@@ -82,6 +82,7 @@ function commandProcess(command){
 						break;
 					case "openTransition":
 						with obj_roomChange open=true;
+						audio_play_sound(snd_swoosh,1,false);
 						break;
 					default:
 						with _obj variable_instance_set(id,_name,_val);

@@ -9,6 +9,8 @@ if(isServer&&room!=rm_title){
 			//Play the first conversation
 			conversation(dialogueSequence[dialogueIndex]);
 			dialogueIndex++;
+			audio_sound_gain(music,0,500);
+			music=audio_play_sound(mus_prepare,1,true);
 		}
 	}else if(state == States.dialogue){
 		//When the dialogue box no longer exists, the dialoge sequence is over and we can proceed
@@ -39,6 +41,8 @@ if(isServer&&room!=rm_title){
 				objectiveSpawns[i] = irandom_range(i*blockSize, (i+1)*blockSize-1);
 			}
 			nextObjectiveToSpawn = 0;
+			audio_sound_gain(music,0,500);
+			music=audio_play_sound(mus_playing1,2,true);
 		}
 	}else if(state == States.gameplay){
 		//Create people
@@ -99,6 +103,7 @@ if(isServer&&room!=rm_title){
 			goalRankDisplayScale = 1;
 			speedBoost = 1;
 			//sendPacket([netData.disconnect]);
+			audio_sound_gain(music,0,200);
 		}
 	}else if(state == States.rank){
 		//update the display
@@ -118,6 +123,8 @@ if(isServer&&room!=rm_title){
 			var dialogueToken = dialogueIndex >= array_length(dialogueSequence) ? "end" : dialogueSequence[dialogueIndex];
 			conversation(dialogueToken);
 			dialogueIndex++;
+			audio_sound_gain(music,0,500);
+			music=audio_play_sound(mus_prepare,1,true);
 		}
 	}
 	
