@@ -13,6 +13,7 @@ if(isServer){
 	}else if(state == States.dialogue){
 		//When the dialogue box no longer exists, the dialoge sequence is over and we can proceed
 		if(!instance_exists(oTextbox)){
+			
 			state = States.gameplay;
 			peopleCount = 0;
 			//Set properties for each floor
@@ -71,6 +72,7 @@ if(isServer){
 				}else{
 					correctGuesses++;
 				}
+				target.clicked=true;
 				instance_destroy(target);
 			}
 		}

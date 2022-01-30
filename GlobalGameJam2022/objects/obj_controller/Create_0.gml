@@ -35,7 +35,8 @@ enum hostSide {
 
 enum windowModes {
 	normal,
-	xRay
+	xRay,
+	thermal
 }
 windowMode = windowModes.normal;
 windowSurf=-1;
@@ -46,6 +47,8 @@ connected = false;
 sendNextRoom = false;
 netObjs = ds_map_create();
 updateAll = false;
+
+instance_create_depth(0,0,0,oMouse);
 
 global.roomTime=0;
 global.hudAlpha=0.95;
@@ -71,6 +74,13 @@ if(server < 0){
 	program = 0;
 }
 #macro isServer (!obj_controller.program)
+
+if !isServer {
+	var _i=instance_create_depth(40,40,-1000,oModeToggle);
+	var _i=instance_create_depth(120,40,-1000,oModeToggle);
+	_i.windowMode=windowModes.thermal;
+}
+
 if (isServer) {
 	// <primary instance>
 	window_set_caption("Primary")
@@ -101,6 +111,12 @@ otherWindowX = 0;
 otherWindowY = 0;
 lastWindowX = -1;
 lastWindowY = -1;
+shakeX=0;
+shakeY=0;
+currentShakeX=0;
+currentShakeY=0;
+shakeTime=0;
+global.guiSurf=-1;
 
 //Game stuff
 enum States{

@@ -34,8 +34,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "dialogue",
-    "path": "folders/Objects/menus/dialogue.yy",
+    "name": "menus",
+    "path": "folders/Objects/menus.yy",
   },
   "resourceVersion": "1.0",
   "name": "oTextbox",
