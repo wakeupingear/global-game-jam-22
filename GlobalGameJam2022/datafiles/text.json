@@ -3,8 +3,9 @@
         "$goto","test",
         "Welcome to the first day of the rest of your *Afterlife*!",
         "$openTransition",60,
-        "#test",
         "There's a few ^troublemakers^ trying to sneak past *Afterlife Security*! Click on them to send 'em right back!",
+        "$end",
+        "#test",
         "$open_two_windows",30,"$addCamera",30,"$addCamera"
     ],
     "d2": [
