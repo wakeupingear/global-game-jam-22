@@ -81,8 +81,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Final Characters",
-    "path": "folders/Sprites/Final Characters.yy",
+    "name": "Characters",
+    "path": "folders/Sprites/Characters.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_dress_white",
