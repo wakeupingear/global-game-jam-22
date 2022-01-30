@@ -52,8 +52,8 @@ for(var i = 0; i < traitCount; i++){
 			case(Colors.purple): draw_set_color(c_purple); cString = "Purple"; break;
 			case(Colors.orange): draw_set_color(c_orange); cString = "Orange"; break;
 			}
-			if draw_get_color()!=c_black draw_text_color(drawX+_sX, drawY+_sY, cString+ " clothing",c_black,c_black,c_black,c_black,1);
-			draw_text(drawX, drawY, cString+ " clothing");
+			if draw_get_color()!=c_black draw_text_color(drawX+_sX, drawY+_sY, cString+ " Clothing",c_black,c_black,c_black,c_black,1);
+			draw_text(drawX, drawY, cString+ " Clothing");
 			break;
 		case(Traits.thermals):
 			var tString = "";
@@ -64,6 +64,16 @@ for(var i = 0; i < traitCount; i++){
 			}
 			draw_text_color(drawX+_sX, drawY+_sY, tString,c_black,c_black,c_black,c_black,1);
 			draw_text(drawX, drawY, tString);
+			break;
+		case(Traits.xray):
+			var xString = "";
+			switch(objectiveTraits[i]){
+			case(Xray.none): xString = "With Nothing Metal"; break;
+			case(Xray.gun): xString = "With a Gun"; break;
+			case(Xray.belt): xString = "With a Belt"; break;
+			case(Xray.phone): xString = "With a Phone"; break;
+			case(Xray.teeth): xString = "With Metal Teeth"; break;
+			}
 			break;
 		}
 		

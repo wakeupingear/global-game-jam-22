@@ -10,8 +10,9 @@ switch obj {
 		switch obj_controller.windowMode{
 			case windowModes.thermal:
 			case windowModes.xRay:
-			case windowModes.soul:
 				shader_set(shd_solidPerson); break;
+			case windowModes.soul:
+				break;
 			default: break;
 		}
 		break;
