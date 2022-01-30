@@ -131,6 +131,7 @@ function drawBlur(quality,factor,surf){
 	if shader_current()!=-1 shader_reset();
 	surface_reset_target();
 	draw_surface(surf,camX()*(!isServer),camY()*(!isServer));
+	return surf;
 }
 function drawShake(_x,_y,surf){
 	if !surface_exists(surf) surf=surface_create(surface_get_width(application_surface),surface_get_height(application_surface));
@@ -140,6 +141,7 @@ function drawShake(_x,_y,surf){
 	draw_surface(application_surface,_x,_y);
 	surface_reset_target();
 	draw_surface(surf,camX()*(!isServer),camY()*(!isServer));
+	return surf;
 }
 function drawColorize(surf,r,g,b,a){
 	if !surface_exists(surf) surf=surface_create(surface_get_width(application_surface),surface_get_height(application_surface));
@@ -151,6 +153,7 @@ function drawColorize(surf,r,g,b,a){
 	if shader_current()!=-1 shader_reset();
 	surface_reset_target();
 	draw_surface(surf,camX()*(!isServer),camY()*(!isServer));
+	return surf;
 }
 
 function collectParticle(_x,_y,spr,num){

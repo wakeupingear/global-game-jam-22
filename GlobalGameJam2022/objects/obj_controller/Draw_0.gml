@@ -2,13 +2,13 @@
 if windowMode!=windowModes.normal {
 	switch windowMode{
 		case windowModes.thermal:
-			drawColorize(obj_controller.windowSurf,46,49,146,0.5);
+			obj_controller.windowSurf=drawColorize(obj_controller.windowSurf,46,49,146,0.5);
 			break;
 		case windowModes.xRay:
-			drawColorize(obj_controller.windowSurf,61,102,70,0.9);
+			obj_controller.windowSurf=drawColorize(obj_controller.windowSurf,61,102,70,0.9);
 			break;
 		case windowModes.soul:
-			drawColorize(obj_controller.windowSurf,20,20,20,0.8);
+			obj_controller.windowSurf=drawColorize(obj_controller.windowSurf,20,20,20,0.8);
 			break;
 	}
 }
