@@ -130,6 +130,7 @@ else if mode==2
 		}
 		if oMouse.clicked //false//&&buttonPressed(control.confirm)
 		{
+			shake(8,8);
 			//rumbleStart(rumbleType.lighterPulse);
 			if question
 			{
