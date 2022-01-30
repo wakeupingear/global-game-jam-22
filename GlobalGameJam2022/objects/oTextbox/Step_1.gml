@@ -105,7 +105,7 @@ if mode>-1&&mode<2
 			if skip mode=0;
 			else 
 			{
-				confirmIcon=instance_create_depth(0,0,depth,oPlaceholder);
+				confirmIcon=instance_create_depth(0,0,depth,obj_placeholder);
 				confirmIcon.sprite_index=sDialogueConfirm;
 				confirmIcon.image_speed=1;
 				confirmIcon.image_xscale=0.5;

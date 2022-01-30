@@ -9,6 +9,17 @@ if windowMode!=windowModes.normal {
 	}
 }
 
+if shakeTime>0{
+	shakeTime--;
+	currentShakeX=irandom_range(-shakeX,shakeX);
+	currentShakeY=irandom_range(-shakeY,shakeY);
+	drawShake(currentShakeX,currentShakeY,windowSurf);
+}
+else {
+	currentShakeX=0;
+	currentShakeY=0;
+}
+
 if(isServer && rankDisplayScale > 0.01){
 	var _y=twerp(TwerpType.in_cubic,-400,0,rankDisplayScale);
 	draw_sprite_ext(sPartDust,0,0,0,room_width,room_height,0,c_black,rankDisplayScale*0.3);

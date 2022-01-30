@@ -65,7 +65,7 @@ setHeight=function(){
 }
 
 defaultLeftX=115;
-defaultTopY=110;
+defaultTopY=32;
 
 confirmIcon=noone;
 
@@ -81,7 +81,7 @@ drawIcon=function(_x,_xS,_y,_yS){
 	}
 }
 draw=function(edgeX,edgeY){
-	draw_sprite_ext(sPartDust,0,0,0,room_width,room_height,0,c_black,image_alpha*0.3);
+	draw_sprite_ext(sPartDust,0,0,0,room_width,room_height,0,c_black,image_alpha*0.35);
 	x=edgeX+(1-image_alpha)*64;
 	y=edgeY+132*(!top);
 
@@ -104,6 +104,7 @@ draw=function(edgeX,edgeY){
 
 	if sprite_index==sTextbox//&&global.lightAlpha==0
 	{
+		draw_sprite_ext(sprite_index,0,x+10,y+10,1,1,0,c_black,image_alpha*0.8);
 		draw_sprite_ext(sprite_index,0,x,y,1,1,0,global.hudColor,image_alpha*global.hudAlpha);
 		draw_sprite_ext(sprite_index,1,x,y,1,1,0,-1,image_alpha);
 	}

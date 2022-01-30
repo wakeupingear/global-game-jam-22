@@ -16,7 +16,7 @@ drawnTraitHeights[Traits.head] = 64;
 
 moveProg=0;
 textProg=0;
-y+=300;
+y+=450;
 
 personFits=function(p){
 	for(var i = 0; i < traitCount; i++){

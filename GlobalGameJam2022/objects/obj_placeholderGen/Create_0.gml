@@ -16,10 +16,13 @@ for (var i = 0; i < array_length(a); i++;)
 		_i.image_angle=layer_sprite_get_angle(a[i]);
 		_i.image_blend=layer_sprite_get_blend(a[i]);
 		
-		if _i.sprite_index==spr_hellLight||_i.sprite_index==spr_purgatoryLight||_i.sprite_index==spr_heavenLight{
+		if _i.sprite_index==spr_hellLight||_i.sprite_index==spr_purgatoryLight||_i.sprite_index==spr_heavenLight
+		{
+			_i.image_index=1;
 			var _l=instance_create_depth(_x,_y,_d,obj_light);
+			if _i.sprite_index==spr_hellLight _l.alarm[0]=-1;
 			_l.sprite_index=_i.sprite_index;
-			_l.image_index=1;
+			_l.image_index=2;
 			_l.image_xscale=_i.image_xscale;
 			_l.image_yscale=_i.image_yscale;
 			_l.image_angle=_i.image_angle;
