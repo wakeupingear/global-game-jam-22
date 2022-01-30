@@ -75,8 +75,17 @@ for(var i = 0; i < traitCount; i++){
 			case(Xray.teeth): xString = "With Metal Teeth"; break;
 			}
 			break;
+		case(Traits.soul):
+			var sString = "";
+			switch(objectiveTraits[i]){
+			case(Soul.good): draw_set_color(c_aqua); sString = "A Good Soul"; break;
+			case(Soul.neutral): draw_set_color(c_ltgrey); sString = "An Indifferent Soul"; break;
+			case(Soul.evil): draw_set_color(c_red); sString = "An Evil Soul"; break;
+			}
+			draw_text_color(drawX+_sX, drawY+_sY, sString,c_black,c_black,c_black,c_black,1);
+			draw_text(drawX, drawY, sString);
+			break;
 		}
-		
 		//Move where we draw next
 		drawY += drawnTraitHeights[i]/2;
 	}
