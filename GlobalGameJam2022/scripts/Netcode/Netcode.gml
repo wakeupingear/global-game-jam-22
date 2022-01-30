@@ -8,7 +8,7 @@ function Network(_id, _props,_host) constructor{
 		array_copy(data,0,_props,0,array_length(_props));
 	}
 	sendData=-1;
-	lastProps = array_create(array_length(data), -1);
+	lastProps = array_create(array_length(data), -2);
 	if ds_map_exists(obj_controller.netObjs,token) show_error("DUPLICATE KEY: "+token+", "+object_get_name(_id.object_index),true);
 	ds_map_add(obj_controller.netObjs,token,_id);
 	destroy = function() {
