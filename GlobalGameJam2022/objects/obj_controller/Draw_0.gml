@@ -1,5 +1,4 @@
 /// @description Draw shader
-depth=100;
 if windowMode!=windowModes.normal {
 	switch windowMode{
 		case windowModes.thermal:
@@ -24,4 +23,17 @@ if shakeTime>0{
 else {
 	currentShakeX=0;
 	currentShakeY=0;
+}
+
+if isServer {
+	if !surface_exists(windowSurf) windowSurf=surface_create(surface_get_width(application_surface),surface_get_height(application_surface));
+	surface_set_target(windowSurf);
+	draw_set_alpha(0.3);
+	draw_rectangle_color(0,0,room_width,room_height,c_grey,c_grey,c_black,c_black,false);
+	draw_set_alpha(1);
+	gpu_set_blendmode(bm_subtract);
+	with obj_light draw_self();
+	gpu_set_blendmode(bm_normal);
+	surface_reset_target();
+	draw_surface(windowSurf,0,0);
 }

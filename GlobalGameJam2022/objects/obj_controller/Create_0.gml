@@ -55,8 +55,8 @@ updateAll = false;
 instance_create_depth(0,0,0,oMouse);
 
 global.roomTime=0;
-global.hudAlpha=0.95;
-global.hudColor=make_color_rgb(30,30,100);
+global.hudAlpha=0.7;
+global.hudColor=make_color_rgb(212,174,115);
 
 //Shadows
 global.shadowMap = ds_map_create();
