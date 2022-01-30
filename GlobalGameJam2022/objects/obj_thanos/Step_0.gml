@@ -4,7 +4,6 @@ if (animStart) {
 	// Animation progress value
 	if (animVal < 1) animVal += animSpeed;
 	else instance_destroy()//animVal = 1;
-	show_debug_message(animVal)
 	// Create particles, if interval met
 	if (animVal - animPartLast > animPartInterval) {
 		// Get top-left coordinate of instance

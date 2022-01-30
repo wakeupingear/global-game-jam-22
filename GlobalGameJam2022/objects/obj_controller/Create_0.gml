@@ -35,8 +35,8 @@ enum hostSide {
 
 enum windowModes {
 	normal,
+	thermal,
 	xRay,
-	thermal
 }
 windowMode = windowModes.normal;
 windowSurf=-1;
@@ -69,7 +69,7 @@ if(server < 0){
 	socket = network_create_socket(network_socket_tcp);
 	client=socket;
 	network_connect_async(socket,"127.0.0.1",32860);
-	windowMode = windowModes.xRay;
+	windowMode = windowModes.thermal;
 }else{
 	program = 0;
 }
@@ -77,8 +77,9 @@ if(server < 0){
 
 if !isServer {
 	var _i=instance_create_depth(40,40,-1000,oModeToggle);
-	var _i=instance_create_depth(120,40,-1000,oModeToggle);
 	_i.windowMode=windowModes.thermal;
+	var _i=instance_create_depth(120,40,-1000,oModeToggle);
+	_i.windowMode=windowModes.xRay;
 }
 
 if (isServer) {

@@ -1,7 +1,7 @@
 ///Step
 
 //Run the main gameplay loop
-if(isServer){
+if(isServer&&room!=rm_title){
 	if(state == States.setup){
 		//If we're done setting up, carry on.
 		if(!window_command_get_active(window_command_maximize)){
@@ -118,7 +118,7 @@ if(isServer){
 }
 
 //Temp: open the other window if the space key is pressed
-if(isServer && !connected && keyboard_check_pressed(vk_space)){
+if(isTest&&isServer && !connected && keyboard_check_pressed(vk_space)){
 	open_two_windows();
 }
 
