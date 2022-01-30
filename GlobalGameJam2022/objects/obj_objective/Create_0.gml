@@ -13,6 +13,10 @@ objectiveTraits = array_create(traitCount, 0);
 //For testing: set up a objective that wants red people w/ briefcases
 enabledTraits[Traits.color] = true;
 objectiveTraits[Traits.color] = irandom_range(0, 6);
+/*enabledTraits[Traits.clothes] = true;
+objectiveTraits[Traits.clothes] = irandom_range(0, 2);
+enabledTraits[Traits.head] = true;
+objectiveTraits[Traits.head] = irandom_range(0, 5);*/
 
 
 function personFits(p){
@@ -33,6 +37,5 @@ function success(){
 
 //Called when it is failed
 function failure(){
-	obj_controller.failedObjectives++;
 	instance_destroy();
 }

@@ -42,8 +42,43 @@ enum Accessory{
 accessorySprites = [spr_purse, spr_briefcase, spr_wings, spr_pitchfork];
 accessoryOnTop = [true, true, false, true];
 
-//Randomly pick traits
-traits = [irandom_range(0, 5), irandom_range(0, 2), irandom_range(0, 6), irandom_range(0, 3)];
+//Set traits
+if(isServer){
+	objective = noone;
+	with(obj_controller){
+		if(nextObjectiveToSpawn < objectiveCount && objectiveSpawns[nextObjectiveToSpawn] == peopleCount){
+			//It's an objective
+			other.objective = objectives[nextObjectiveToSpawn];
+			nextObjectiveToSpawn++;
+		}
+	}
+	if(objective == noone){
+		var bad = true;
+		while(bad){
+			traits = [irandom_range(0, 5), irandom_range(0, 2), irandom_range(0, 6), irandom_range(0, 3)];
+			bad = false;
+			for(var i = 0; i < obj_controller.objectiveCount; i++){
+				if(instance_exists(obj_controller.objectives[i]) && obj_controller.objectives[i].personFits(id)){
+					bad = true;
+					break;
+				}
+			}
+		}
+	}else{
+		for(var i = 0; i < traitCount; i++){
+			if(objective.enabledTraits[i]){
+				traits[i] = objective.objectiveTraits[i];
+			}else{
+				switch(i){
+				case(Traits.head): traits[i] = irandom_range(0, 5); break;
+				case(Traits.clothes): traits[i] = irandom_range(0, 2); break;
+				case(Traits.color): traits[i] = irandom_range(0, 6); break;
+				case(Traits.accessory): traits[i] = irandom_range(0, 3); break;
+				}
+			}
+		}
+	}
+}
 
 //Networking
 host = hostSide.server;
