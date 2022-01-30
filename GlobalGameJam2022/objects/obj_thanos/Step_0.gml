@@ -2,10 +2,10 @@
 // Animation started
 if (animStart) {
 	// Animation progress value
-	if (animVal < 1) animVal += animSpeed;
+	if (animVal < 2) animVal += animSpeed;
 	else instance_destroy()//animVal = 1;
 	// Create particles, if interval met
-	if (animVal - animPartLast > animPartInterval) {
+	if (animVal<1&&animVal - animPartLast > animPartInterval) {
 		// Get top-left coordinate of instance
 		var _xBase = x - sprite_get_xoffset(sprite_index);
 		var _yBase = y - sprite_get_yoffset(sprite_index);

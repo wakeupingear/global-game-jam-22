@@ -5,9 +5,10 @@ if !instance_exists(obj){
 }
 
 switch obj {
-	case obj_player:
+	case obj_person:
 		if isServer break;
 		if obj_controller.windowMode==windowModes.thermal {
+			drawThermal(obj_controller.windowSurf);
 			shader_set(shd_thermalPerson);
 		}
 		break;

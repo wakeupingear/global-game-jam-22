@@ -5,5 +5,6 @@ function checkShadow(alpha=0.1,xOff=10,yOff=4){
 		_i.image_alpha=alpha;
 		_i.xOff=xOff;
 		_i.yOff=yOff;
+		ds_map_add(global.shadowMap,object_index,_i);
 	}
 }

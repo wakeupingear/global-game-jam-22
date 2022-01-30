@@ -28,6 +28,7 @@
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},"order":2,},
     {"id":{"name":"Effects","path":"scripts/Effects/Effects.yy",},"order":5,},
     {"id":{"name":"oParticleDistort","path":"objects/oParticleDistort/oParticleDistort.yy",},"order":0,},
+    {"id":{"name":"shd_thermal","path":"shaders/shd_thermal/shd_thermal.yy",},"order":3,},
     {"id":{"name":"spr_purse","path":"sprites/spr_purse/spr_purse.yy",},"order":0,},
     {"id":{"name":"sPartDust","path":"sprites/sPartDust/sPartDust.yy",},"order":10,},
     {"id":{"name":"spr_tshirt","path":"sprites/spr_tshirt/spr_tshirt.yy",},"order":2,},

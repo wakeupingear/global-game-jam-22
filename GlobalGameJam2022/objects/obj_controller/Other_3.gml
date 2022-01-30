@@ -1,4 +1,4 @@
 /// @description Close client
-if connected && !program {
+if connected&&isServer {
 	sendPacket([netData.disconnect]);
 }

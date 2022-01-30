@@ -13,7 +13,7 @@ if(isServer&&room!=rm_title){
 	}else if(state == States.dialogue){
 		//When the dialogue box no longer exists, the dialoge sequence is over and we can proceed
 		if(!instance_exists(oTextbox)){
-			
+			if !connected&&wave>1 open_two_windows();
 			state = States.gameplay;
 			peopleCount = 0;
 			//Set properties for each floor
@@ -87,6 +87,7 @@ if(isServer&&room!=rm_title){
 			state = States.rank;
 			rankTimer = 0;
 			goalRankDisplayScale = 1;
+			sendPacket([netData.disconnect]);
 		}
 	}else if(state == States.rank){
 		//update the display
