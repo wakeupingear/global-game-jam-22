@@ -10,13 +10,9 @@ accessoryOnTop = [true, true, false, true];
 enabledTraits = array_create(traitCount, false);
 objectiveTraits = array_create(traitCount, 0);
 
-//For testing: set up a objective that wants red people w/ briefcases
-enabledTraits[Traits.color] = true;
-objectiveTraits[Traits.color] = irandom_range(0, 6);
-/*enabledTraits[Traits.clothes] = true;
-objectiveTraits[Traits.clothes] = irandom_range(0, 2);
-enabledTraits[Traits.head] = true;
-objectiveTraits[Traits.head] = irandom_range(0, 5);*/
+//Things for drawing
+drawnTraitHeights = array_create(traitCount, 32);
+drawnTraitHeights[Traits.head] = 64;
 
 
 function personFits(p){
@@ -38,4 +34,15 @@ function success(){
 //Called when it is failed
 function failure(){
 	instance_destroy();
+}
+
+//Sets this objective's traits according to the array
+//The array should be made of pairs of Traits and the goal for that trait
+//e.g. setTraits([Traits.accessory, Accessory.briefcase, Traits.color, Colors.black])
+//matches people with a briefcase wearing black
+function setTraits(traitArr){
+	for(var i = 0; i < array_length(traitArr); i+=2){
+		enabledTraits[traitArr[i]] = true;
+		objectiveTraits[traitArr[i]] = traitArr[i+1];
+	}
 }

@@ -78,6 +78,12 @@ if(isServer){
 		}
 		//Check if all people are gone
 		if(waveTimer == 0 && !instance_exists(obj_person)){
+			//Just in case there was some bug, fail all remaining objectives
+			var remainingObjectives = instance_number(obj_objective);
+			for(var i = 0; i < remainingObjectives; i++){
+				instance_find(obj_objective, i).failure();
+			}
+			
 			//Calculate rank change
 			displayRank = rank;
 			var rankChange = 0.2*(correctGuesses/objectiveCount) - 0.1*incorrectGuesses;
