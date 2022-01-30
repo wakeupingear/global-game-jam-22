@@ -30,7 +30,7 @@ enum Clothes{
 }
 clothesSprites = [  [spr_suit_black,spr_suit_white,spr_suit_red,spr_suit_green,spr_suit_blue,spr_suit_purple,spr_suit_orange],
 					[spr_dress_black,spr_dress_white,spr_dress_red,spr_dress_green,spr_dress_blue,spr_dress_purple,spr_dress_orange],
-					[spr_tshirt_black,spr_tshirt_white,spr_tshirt_red,spr_tshirt_green,spr_tshirt_blue,spr_tshirt_purple,spr_tshirt_orange]]
+					[spr_tshirt_black,spr_tshirt_white,spr_tshirt_red,spr_tshirt_green,spr_tshirt_blue,spr_tshirt_purple,spr_tshirt_orange]];
 enum Colors{
 	black,
 	white,
@@ -117,6 +117,8 @@ if(isServer){
 	dir = obj_controller.flrDirs[flr];
 	sprite_index = clothesSprites[traits[Traits.clothes]][traits[Traits.color]];
 	image_xscale = dir;
+}else{
+	smoke_image_index = 0;
 }
 
 //Networking
@@ -150,7 +152,10 @@ draw = function(_x,_y){
 		//else if obj_controller.windowMode==windowModes.soul shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),1,1,1);
 	}
 	if(!isServer && obj_controller.windowMode == windowModes.soul){
-		draw_sprite(spr_smoke_small, image_index*5, x+_x, y+_y);
+		var alpha1 = abs(smoke_image_index-100)/100;
+		var alpha2 = (100-abs(smoke_image_index-100))/100;
+		draw_sprite_ext(spr_smoke_small, floor(smoke_image_index), x+_x, y+_y,.5,.5,0,c_white,alpha2);
+		draw_sprite_ext(spr_smoke_small, floor(smoke_image_index)+100, x+_x, y+_y,.5,.5,0,c_white,alpha1);
 	}else{
 		draw_sprite_ext(clothesSprites[traits[Traits.clothes]][traits[Traits.color]], image_index, x+_x, y+_y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
 		draw_sprite_ext(headSprites[traits[Traits.head]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);

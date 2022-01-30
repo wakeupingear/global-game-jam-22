@@ -4,7 +4,9 @@
         "Welcome to the first day of the rest of your *Afterlife*!",
         "$openTransition",60,
         "There's a few ^troublemakers^ trying to sneak past *Afterlife Security*! Click on them to send 'em right back!",
-        "#test"
+        "$end",
+        "#test",
+        "$open_two_windows",30,"$addCamera",30,"$addCamera"
     ],
     "d2": [
         "Wanted posters can have multiple criteria",
