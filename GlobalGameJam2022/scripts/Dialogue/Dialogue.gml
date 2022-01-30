@@ -30,6 +30,48 @@ function commandProcess(command){
 			diag+=2;
 			return command[diag-1];
 		}
+		else if string_char_at(command[diag],1)=="$"{
+			var _data=string_replace_all(string_copy(command[diag],2,string_length(command[diag])-1)," ","");
+			
+			var _val=0;
+			diag+=2;
+			if diag-1<array_length(command) 
+			{
+				_val=command[diag-1];
+			}
+			
+			var _obj=string_copy(_data,1,string_pos(".",_data)-1);
+			var _originalObj=_obj;
+			var _name=string_replace(_data,_obj+".","");
+			if _obj==_name _obj="";
+			if _obj=="global"
+			{
+				variable_global_set(_name,_val);
+				saved=true;
+			}
+			else {
+				if _obj!="" 
+				{
+					if is_string(_obj)&&string_pos("All",_obj)>0
+					{
+						_obj=asset_get_index(string_replace(_obj,"All",""));
+					}
+					else _obj=getObject(_obj);
+				}
+				var _scr=asset_get_index(_name);
+				if script_exists(_scr) script_execute(_scr)
+				else switch _name{
+					default:
+						with _obj variable_instance_set(id,_name,_val);
+						if _name=="key" 
+						{
+							with _obj event_perform(ev_alarm,0);
+						}
+						break;
+				}
+				diag--;
+			}
+		}
 		else {
 			var _word=command[diag];
 			diag++;

@@ -70,7 +70,7 @@
     {"id":{"name":"oMouse","path":"objects/oMouse/oMouse.yy",},"order":4,},
     {"id":{"name":"twerp","path":"scripts/twerp/twerp.yy",},"order":15,},
     {"id":{"name":"spr_head_0","path":"sprites/spr_head_0/spr_head_0.yy",},"order":0,},
-    {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"order":0,},
+    {"id":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},"order":0,},
   ],
   "Options": [
     {"name":"Amazon Fire","path":"options/amazonfire/options_amazonfire.yy",},
@@ -95,7 +95,7 @@
   "RoomOrderNodes": [
     {"roomId":{"name":"rm_startup","path":"rooms/rm_startup/rm_startup.yy",},},
     {"roomId":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
-    {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
+    {"roomId":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

@@ -186,5 +186,5 @@ function personExits(p){
 
 //Go to the next room
 sendNextRoom=false;
-if isTest room_goto(rm_test);
+if isTest room_goto(rm_game);
 else room_goto(rm_title);
