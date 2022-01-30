@@ -6,8 +6,8 @@ sendNextRoom=true;
 
 //Resize Camera
 if(!isServer){
-	window_set_size(500, 500);
-	surface_resize(application_surface, 500, 500);
+	window_set_size(smallWindowSize, smallWindowSize);
+	surface_resize(application_surface, smallWindowSize, smallWindowSize);
 	view_visible[0] = false;
 	view_visible[1] = true;
 }

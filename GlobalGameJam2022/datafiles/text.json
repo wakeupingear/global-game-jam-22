@@ -1,7 +1,6 @@
 {
     "d1": [
         "Hi. This is the intro to the game and it has some flavor text",
-        "$open_two_windows",60,
         "Click on the people who match the descriptions on the wanted posters"
     ],
     "d2": [
@@ -9,14 +8,15 @@
         "Only click on people who match every category in a wanted poster"
     ],
     "d3": [
-        "We've detected some intruders who can only be identified by their body temperature",
+        "Some intruders can only be identified by their body temperature",
+        "$open_two_windows",60,
         "Use this new dual window technolgy to see body temperature"
     ],
     "d4": [
-        "Well done! keep going"
+        "To identify these intruders, make sure they have the right clothes AND temperature"
     ],
     "d5": [
-        "Now, we're going to search for people with specific contraband",
+        "Some impostors can be identified by their personal belongings",
         "In your thermal camera, press the new button to switch to x-ray mode"
     ],
     "end": [

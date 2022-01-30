@@ -3,7 +3,7 @@
 if(isServer){
 
 	//Move
-	x += spd*dir;
+	x += spd*dir*obj_controller.speedBoost;
 	image_xscale=dir;
 	
 	//Check if we've passed the bound and we're donezo
