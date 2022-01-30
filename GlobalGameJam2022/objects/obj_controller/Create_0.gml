@@ -133,8 +133,12 @@ for(var i = 0; i < 3; i++){
 	flrYs[i] = fy;
 	fy += 128;
 }
-newPersonX = 0;
+peopleCount = 0;
 wave = 1;
+rank = -0.7;
+displayRank = rank;
+rankDisplayScale = 0;
+goalRankDisplayScale = 0;
 
 //Used to create the objectives of a given wave
 function makeObjectives(w){
@@ -148,13 +152,17 @@ function makeObjectives(w){
 
 //Called by a person when they exit the game
 function personExits(p){
-	for(var i = 0; i < array_length(objectives); i++){
-		if(objectives[i].personFits(p)){
+	/*for(var i = 0; i < array_length(objectives); i++){
+		if(instance_exists(objectives[i]) && objectives[i].personFits(p)){
 			objectives[i].failure();
-			array_delete(objectives, i, 1);
 			failedObjectives++;
 			return;
 		}
+	}*/
+	if(p != noone){
+		p.objective.failure();
+		failedObjectives++;
+		return;
 	}
 }
 

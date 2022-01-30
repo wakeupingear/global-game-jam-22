@@ -15,16 +15,30 @@ if(isServer){
 		if(!instance_exists(oTextbox)){
 			
 			state = States.gameplay;
+			peopleCount = 0;
 			//Set properties for each floor
+			waveTimer = 10*60;
+			var predictedPeople = 0;
 			for(var i = 0; i < 3; i++){
 				flrDirs[i] = random(1) > 0.5 ? 1 : -1;
 				flrSpds[i] = random_range(0.5, 1);
 				flrRates[i] = irandom_range(120, 360);
 				flrCooldowns[i] = 0;
+				predictedPeople += waveTimer/flrRates[i];
 			}
-			waveTimer = 20*60;
 			//Create objectives
 			objectives = makeObjectives(wave);
+			objectiveCount = array_length(objectives);
+			correctGuesses = 0;
+			incorrectGuesses = 0;
+			failedObjectives = 0;
+			//Figure out when we'll spawn objectives
+			objectiveSpawns = array_create(objectiveCount);
+			var blockSize = floor(predictedPeople/objectiveCount);
+			for(var i = 0; i < objectiveCount; i++){
+				objectiveSpawns[i] = irandom_range(i*blockSize, (i+1)*blockSize-1);
+			}
+			nextObjectiveToSpawn = 0;
 		}
 	}else if(state == States.gameplay){
 		//Create people
@@ -33,31 +47,30 @@ if(isServer){
 			for(var i = 0; i < 3; i++){
 				if(flrCooldowns[i] == 0){
 					//make a new guy on that floor
-					instance_create_layer(newPersonX,i,"Instances",obj_person);
-					newPersonX++;
+					instance_create_layer(peopleCount,i,"Instances",obj_person);
+					//the person will automatically use objectiveSpawns and objectives
+					//to see if it needs to be an objective and what it needs to be
+					peopleCount++;
 					flrCooldowns[i] = flrRates[i];
 				}else{
 					flrCooldowns[i]--;
 				}
 			}
 		}
-		incorrectGuesses = 0;
-		failedObjectives = 0;
 		//Check for click
 		if(mouse_check_button_pressed(mb_left)){
 			var target = collision_point(mouse_x, mouse_y, obj_person,1,true);
 			if(target != noone){
 				isObjective = false;
-				for(var i = 0; i < array_length(objectives); i++){
-					if(objectives[i].personFits(target)){
-						isObjective = true;
-						objectives[i].success();
-						array_delete(objectives, i, 1);
-						break;
-					}
+				if(target.objective != noone){
+					isObjective = true;
+					target.objective.success();
+					target.objective = noone;
 				}
 				if(!isObjective){
 					incorrectGuesses++;
+				}else{
+					correctGuesses++;
 				}
 				target.clicked=true;
 				instance_destroy(target);
@@ -65,18 +78,42 @@ if(isServer){
 		}
 		//Check if all people are gone
 		if(waveTimer == 0 && !instance_exists(obj_person)){
+			//Calculate rank change
+			displayRank = rank;
+			var rankChange = 0.2*(correctGuesses/objectiveCount) - 0.1*incorrectGuesses;
+			rank += rankChange;
+			//Go to the next state
 			wave++;
 			state = States.rank;
+			rankTimer = 0;
+			goalRankDisplayScale = 1;
 		}
 	}else if(state == States.rank){
-		//for now, immediately carry on
-		if(true){
+		//update the display
+		if(rankTimer > 60 && rank != displayRank){
+			if(displayRank < rank){
+				displayRank = clamp(displayRank + 0.005, -1, rank);
+			}else if(displayRank > rank){
+				displayRank = clamp(displayRank - 0.005, rank, 1);
+			}
+		}
+		rankTimer++;
+		//let the player skip at any point
+		if(mouse_check_button_pressed(mb_left)){
 			state = States.dialogue;
+			goalRankDisplayScale = 0;
 			//Start whatever conversation comes next
 			var dialogueToken = dialogueIndex >= array_length(dialogueSequence) ? "end" : dialogueSequence[dialogueIndex];
 			conversation(dialogueToken);
 			dialogueIndex++;
 		}
+	}
+	
+	//No matter the state, move the rank display towards its goal
+	if(rankDisplayScale < goalRankDisplayScale){
+		rankDisplayScale = lerp(rankDisplayScale, goalRankDisplayScale, 0.08);
+	}else{
+		rankDisplayScale = clamp(rankDisplayScale - 1/30, goalRankDisplayScale, 1);
 	}
 }
 
