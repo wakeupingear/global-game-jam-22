@@ -4,7 +4,7 @@
     {"id":{"name":"spr_rankDisplay","path":"sprites/spr_rankDisplay/spr_rankDisplay.yy",},"order":10,},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},"order":0,},
     {"id":{"name":"oEffectHelper","path":"objects/oEffectHelper/oEffectHelper.yy",},"order":4,},
-    {"id":{"name":"shd_thermalPerson","path":"shaders/shd_thermalPerson/shd_thermalPerson.yy",},"order":2,},
+    {"id":{"name":"shd_solidPerson","path":"shaders/shd_solidPerson/shd_solidPerson.yy",},"order":2,},
     {"id":{"name":"spr_colorSample","path":"sprites/spr_colorSample/spr_colorSample.yy",},"order":3,},
     {"id":{"name":"sprite_pragma","path":"scripts/sprite_pragma/sprite_pragma.yy",},"order":2,},
     {"id":{"name":"spr_head_5","path":"sprites/spr_head_5/spr_head_5.yy",},"order":5,},
@@ -30,7 +30,7 @@
     {"id":{"name":"obj_controller","path":"objects/obj_controller/obj_controller.yy",},"order":2,},
     {"id":{"name":"Effects","path":"scripts/Effects/Effects.yy",},"order":5,},
     {"id":{"name":"oParticleDistort","path":"objects/oParticleDistort/oParticleDistort.yy",},"order":0,},
-    {"id":{"name":"shd_thermal","path":"shaders/shd_thermal/shd_thermal.yy",},"order":3,},
+    {"id":{"name":"shd_colorize","path":"shaders/shd_colorize/shd_colorize.yy",},"order":3,},
     {"id":{"name":"spr_purse","path":"sprites/spr_purse/spr_purse.yy",},"order":0,},
     {"id":{"name":"sPartDust","path":"sprites/sPartDust/sPartDust.yy",},"order":10,},
     {"id":{"name":"spr_tshirt","path":"sprites/spr_tshirt/spr_tshirt.yy",},"order":2,},
@@ -87,7 +87,6 @@
   ],
   "isDnDProject": false,
   "isEcma": false,
-  "tutorialPath": "",
   "configs": {
     "name": "Default",
     "children": [
@@ -151,7 +150,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"text.json","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.7.606",
+    "IDEVersion": "2022.1.0.609",
   },
   "resourceVersion": "1.4",
   "name": "GlobalGameJam2022",

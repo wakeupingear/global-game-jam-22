@@ -5,7 +5,7 @@
     "path": "folders/Shaders.yy",
   },
   "resourceVersion": "1.0",
-  "name": "shd_thermalPerson",
+  "name": "shd_solidPerson",
   "tags": [],
   "resourceType": "GMShader",
 }

@@ -99,6 +99,12 @@ switch async_load[? "type"] {
 					case netData.windowMode:
 						windowMode=buffer_read(_data,buffer_s16);
 						break;
+					case netData.newUIButton:
+						var _num=instance_number(oModeToggle);
+						if _num>=3 break;
+						var _i=instance_create_depth(40+80*_num,40,-1000,oModeToggle);
+						_i.windowMode=_num+1;
+						break;
 					default: break;
 				}
 				buffer_seek(_data,buffer_seek_start,min(_size,_bufferInd*512));

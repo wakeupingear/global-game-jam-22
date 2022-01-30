@@ -1,8 +1,11 @@
 //format the string for the first frame
+draw_set_font(font);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 if !sentenceFormatted
 {
 	var _len=string_length(sentence)
-	var _maxWidth=round((384-(2*textX+leftShift+rightShift))*guiX())*GUIS;
+	var _maxWidth=round((384-(2*textX+leftShift+rightShift))*guiX()*(GUIS-0.7));
 	var _sentShift=sentence
 	if _maxWidth-string_width(_sentShift)<0&&string_pos(" ",_sentShift)>0
 	{
@@ -32,7 +35,7 @@ if textUpdated&&alarm[0]==-1&&sentence!=""
 		var _let=string_char_at(sentence,newLetterInd+1)
 		if _let=="\n"
 		{
-			newLetterX=0;
+			newLetterX=defaultLeftX;
 			newLetterY+=string_height("f");
 		}
 		else

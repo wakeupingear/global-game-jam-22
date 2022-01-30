@@ -5,6 +5,7 @@
     ],
     "d2": [
         "Wanted posters can have multiple criteria",
+        "$addCamera",
         "Only click on people who match every category in a wanted poster"
     ],
     "d3": [
