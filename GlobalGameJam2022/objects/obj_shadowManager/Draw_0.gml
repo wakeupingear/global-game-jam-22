@@ -7,9 +7,12 @@ if !instance_exists(obj){
 switch obj {
 	case obj_person:
 		if isServer break;
-		if obj_controller.windowMode==windowModes.thermal {
-			drawThermal(obj_controller.windowSurf);
-			shader_set(shd_thermalPerson);
+		switch obj_controller.windowMode{
+			case windowModes.thermal:
+			case windowModes.xRay:
+			case windowModes.soul:
+				shader_set(shd_solidPerson); break;
+			default: break;
 		}
 		break;
 	default: break;

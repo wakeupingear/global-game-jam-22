@@ -12,7 +12,8 @@ enum netData {
 	newRoom,
 	objData,
 	windowCoords,
-	windowMode
+	windowMode,
+	newUIButton
 }
 
 enum oP {
@@ -37,6 +38,7 @@ enum windowModes {
 	normal,
 	thermal,
 	xRay,
+	soul
 }
 windowMode = windowModes.normal;
 windowSurf=-1;
@@ -75,21 +77,15 @@ if(server < 0){
 }
 #macro isServer (!obj_controller.program)
 
-if !isServer {
-	var _i=instance_create_depth(40,40,-1000,oModeToggle);
-	_i.windowMode=windowModes.thermal;
-	var _i=instance_create_depth(120,40,-1000,oModeToggle);
-	_i.windowMode=windowModes.xRay;
-}
-
+smallWindowSize=514;
 if (isServer) {
 	// <primary instance>
 	window_set_caption("Primary")
-	window_set_position(160, 90);
+	window_set_position(display_get_width()/2-window_get_width()/2, display_get_height()/2-window_get_height()/2);
 }else{
 	// <secondary instance>
 	window_set_caption("Secondary")
-	window_set_position(900, 260);
+	window_set_position(display_get_width()/2-smallWindowSize/2, display_get_height()/2-smallWindowSize/2-100);
 }
 
 //Runs when a connection is established
@@ -98,6 +94,7 @@ onConnect = function(network_map){
 	if isServer {
 		client = network_map[? "socket"];
 		sendPacket([netData.connect]);
+		sendPacket([netData.newUIButton]);
 		updateAll = true;
 		for (var k = ds_map_find_first(netObjs); !is_undefined(k); k = ds_map_find_next(netObjs, k)) {
 			var _id=netObjs[? k];
