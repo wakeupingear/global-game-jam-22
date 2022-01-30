@@ -4,11 +4,11 @@ function getObjectiveTraits(stage){
 	var t = array_create(1);
 	switch(stage){
 	case(0):
-		t[0] = [Traits.clothes, Clothes.suit];
-		t[1] = [Traits.color, Colors.red];
+		t[0] = [Traits.clothes, Clothes.suit, Traits.head, Head.flowerMan, Traits.thermals, thermals.hot, Traits.accessory, Accessory.briefcase, Traits.color, Colors.red];
+		t[1] = [Traits.head, Head.devilMan];
 		break;
 	case(1):
-		t[0] = [Traits.clothes, Clothes.dress, Traits.head, Head.blondeWoman];
+		t[0] = [Traits.clothes, Clothes.dress, Traits.head, Head.angelMan];
 		t[1] = [Traits.color, Colors.blue, Traits.accessory, Accessory.pitchfork];
 		t[2] = [Traits.color, Colors.orange, Traits.clothes, Clothes.suit];
 		break;

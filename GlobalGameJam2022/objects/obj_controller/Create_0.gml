@@ -128,7 +128,7 @@ enum States{
 state = States.setup;
 dialogueSequence = ["d1", "d2", "d3", "d4", "d5"];
 dialogueIndex = 0;
-flrYs=[124,332,572];
+flrYs=[84,292,532];
 peopleCount = 0;
 wave = 0;
 rank = -0.7;

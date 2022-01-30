@@ -13,19 +13,25 @@ enum Traits{
 }
 enum Head{
 	baldMan,
-	hairMan,
-	blondeWoman,
-	brunetteWoman,
-	devil,
-	angel
+	greyWoman,
+	gingerWoman,
+	laurelWoman,
+	flowerMan,
+	devilMan,
+	devilWoman,
+	hatMan,
+	angelMan,
+	angelWoman
 }
-headSprites = [spr_head_0, spr_head_1, spr_head_2, spr_head_3, spr_head_4, spr_head_5];
+headSprites = [spr_head1, spr_head2, spr_head3, spr_head4, spr_head5, spr_head6, spr_head7, spr_head8, spr_head9, spr_head10];
 enum Clothes{
 	suit,
 	dress,
 	tshirt
 }
-clothesSprites = [spr_suit, spr_dress, spr_tshirt];
+clothesSprites = [  [spr_suit_black,spr_suit_white,spr_suit_red,spr_suit_green,spr_suit_blue,spr_suit_purple,spr_suit_orange],
+					[spr_dress_black,spr_dress_white,spr_dress_red,spr_dress_green,spr_dress_blue,spr_dress_purple,spr_dress_orange],
+					[spr_suit_black,spr_suit_white,spr_suit_red,spr_suit_green,spr_suit_blue,spr_suit_purple,spr_suit_orange]]
 enum Colors{
 	black,
 	white,
@@ -69,7 +75,7 @@ if(isServer){
 	if(objective == noone){
 		var bad = true;
 		while(bad){
-			traits = [irandom_range(0, 5), irandom_range(0, 2), irandom_range(0, 6), irandom_range(0, 3),
+			traits = [irandom_range(0, 9), irandom_range(0, 2), irandom_range(0, 6), irandom_range(0, 3),
 				irandom(array_length(thermalColors)-1), //window mode 1
 				0, //window 2
 				0 //window 3
@@ -123,6 +129,12 @@ if(isServer){
 	y = obj_controller.flrYs[flr];
 }
 
+if(isServer){
+	sprite_index = clothesSprites[traits[Traits.clothes]][traits[Traits.color]];
+	image_xscale = dir;
+	image_yscale = 1;
+}
+
 createShadow(0.4);
 yStartOffset=irandom(100);
 draw = function(_x,_y){
@@ -135,7 +147,7 @@ draw = function(_x,_y){
 	if(!accessoryOnTop[traits[Traits.accessory]]){
 		draw_sprite_ext(accessorySprites[traits[Traits.accessory]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);
 	}
-	draw_sprite_ext(clothesSprites[traits[Traits.clothes]], 0, x+_x, y+_y, image_xscale, image_yscale, image_angle, colors[traits[Traits.color]], image_alpha);
+	draw_sprite_ext(clothesSprites[traits[Traits.clothes]][traits[Traits.color]], image_index, x+_x, y+_y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
 	draw_sprite_ext(headSprites[traits[Traits.head]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);
 	if(accessoryOnTop[traits[Traits.accessory]]){
 		draw_sprite_ext(accessorySprites[traits[Traits.accessory]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);

@@ -1,10 +1,10 @@
 ///Create
 ///Arrays for Traits
-headSprites = [spr_head_0, spr_head_1, spr_head_2, spr_head_3, spr_head_4, spr_head_5];
-clothesSprites = [spr_suit, spr_dress, spr_tshirt];
+headSprites = [spr_head1, spr_head2, spr_head3, spr_head4, spr_head5, spr_head6, spr_head7, spr_head8, spr_head9, spr_head10];
+//clothesSprites = [spr_suit, spr_dress, spr_tshirt];
 colors = [c_black, c_white, c_red, c_green, c_blue, c_purple, c_orange];
-accessorySprites = [spr_purse, spr_briefcase, spr_wings, spr_pitchfork];
-accessoryOnTop = [true, true, false, true];
+//accessorySprites = [spr_purse, spr_briefcase, spr_wings, spr_pitchfork];
+//accessoryOnTop = [true, true, false, true];
 
 //Properties of the objective
 enabledTraits = array_create(traitCount, false);
