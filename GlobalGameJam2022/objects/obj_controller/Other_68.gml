@@ -8,7 +8,8 @@ switch async_load[? "type"] {
 		onConnect(async_load);
 		break;
 	case network_type_disconnect:
-		game_end();
+		connected=false;
+		//game_end();
 		break;
 	case network_type_data:
 		var _data = async_load[? "buffer"];
@@ -85,6 +86,9 @@ switch async_load[? "type"] {
 								_id.traits[1]=buffer_read(_data,buffer_s16);
 								_id.traits[2]=buffer_read(_data,buffer_s16);
 								_id.traits[3]=buffer_read(_data,buffer_s16);
+								_id.traits[4]=buffer_read(_data,buffer_s16);
+								_id.traits[5]=buffer_read(_data,buffer_s16);
+								_id.traits[6]=buffer_read(_data,buffer_s16);
 								break;
 						}
 						break;

@@ -1,7 +1,7 @@
 ///Step
 
 //Run the main gameplay loop
-if(isServer){
+if(isServer&&room!=rm_title){
 	if(state == States.setup){
 		//If we're done setting up, carry on.
 		if(!window_command_get_active(window_command_maximize)){
@@ -13,7 +13,7 @@ if(isServer){
 	}else if(state == States.dialogue){
 		//When the dialogue box no longer exists, the dialoge sequence is over and we can proceed
 		if(!instance_exists(oTextbox)){
-			
+			if !connected&&wave>1 open_two_windows();
 			state = States.gameplay;
 			peopleCount = 0;
 			//Set properties for each floor
@@ -93,6 +93,7 @@ if(isServer){
 			state = States.rank;
 			rankTimer = 0;
 			goalRankDisplayScale = 1;
+			sendPacket([netData.disconnect]);
 		}
 	}else if(state == States.rank){
 		//update the display
@@ -124,7 +125,7 @@ if(isServer){
 }
 
 //Temp: open the other window if the space key is pressed
-if(isServer && !connected && keyboard_check_pressed(vk_space)){
+if(isTest&&isServer && !connected && keyboard_check_pressed(vk_space)){
 	open_two_windows();
 }
 
