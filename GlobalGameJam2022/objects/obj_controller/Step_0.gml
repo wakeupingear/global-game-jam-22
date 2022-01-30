@@ -125,9 +125,9 @@ if(isServer&&room!=rm_title){
 }
 
 //Temp: open the other window if the space key is pressed
-if(isTest&&isServer && !connected && keyboard_check_pressed(vk_space)){
+/*if(isTest&&isServer && !connected && keyboard_check_pressed(vk_space)){
 	open_two_windows();
-}
+}*/
 
 //Move the camera
 if(isServer && connected){
