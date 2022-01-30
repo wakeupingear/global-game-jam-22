@@ -54,9 +54,9 @@ thermalColors=[
 ];
 
 soulColors=[
-	[color_get_red(c_red)/255,color_get_green(c_red)/255,color_get_blue(c_red)/255],
-	[color_get_red(c_white)/255,color_get_green(c_white)/255,color_get_blue(c_white)/255],
 	[color_get_red(c_blue)/255,color_get_green(c_blue)/255,color_get_blue(c_blue)/255],
+	[color_get_red(c_white)/255,color_get_green(c_white)/255,color_get_blue(c_white)/255],
+	[color_get_red(c_red)/255,color_get_green(c_red)/255,color_get_blue(c_red)/255],
 ];
 
 enum Xray{

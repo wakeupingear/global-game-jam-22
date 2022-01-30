@@ -5,8 +5,7 @@
         "$openTransition",60,
         "There's a few ^troublemakers^ trying to sneak past *Afterlife Security*! Click on them to send 'em right back!",
         "$end",
-        "#test",
-        "$open_two_windows",30,"$addCamera",30,"$addCamera"
+        "#test"
     ],
     "d2": [
         "Wanted posters can have multiple criteria",
@@ -14,10 +13,11 @@
     ],
     "d3": [
         "Some troublemakers can only be identified by their body temperature",
+        "$open_two_windows",60,
         "Use this new ^dual window technolgy^ to see body temperature"
     ],
     "d4": [
-        "To identify these intruders, make sure they have the right clothes AND temperature"
+        "To identify these intruders, make sure they have the right appearance AND temperature"
     ],
     "d5": [
         "Some troublemakers can be identified by their personal belongings",
@@ -34,6 +34,7 @@
         "With this tool, you can see the quality of each soul"
     ],
     "end": [
-        "Final Dialogue"
+        "Well done, you've earned a place in heaven!",
+        "You can keep playing as long as you'd like, or stop here."
     ]
 }
