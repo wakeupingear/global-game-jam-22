@@ -14,7 +14,7 @@ if textProg==0 exit;
 drawY -=height/2;
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-draw_set_font(fn_1);
+draw_set_font(fn_2);
 draw_set_alpha(textProg);
 var _sX=2;
 var _sY=1;

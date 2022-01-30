@@ -14,25 +14,17 @@ if windowMode!=windowModes.normal {
 }
 else if surface_exists(windowSurf) surface_free(windowSurf);
 
-if shakeTime>0{
-	shakeTime--;
-	currentShakeX=irandom_range(-shakeX,shakeX);
-	currentShakeY=irandom_range(-shakeY,shakeY);
-	drawShake(currentShakeX,currentShakeY,windowSurf);
-}
-else {
-	currentShakeX=0;
-	currentShakeY=0;
-}
-
 if isServer {
 	if !surface_exists(windowSurf) windowSurf=surface_create(surface_get_width(application_surface),surface_get_height(application_surface));
 	surface_set_target(windowSurf);
+	draw_clear_alpha(c_black,0);
 	draw_set_alpha(0.3);
-	draw_rectangle_color(0,0,room_width,room_height,c_grey,c_grey,c_black,c_black,false);
+	var _yPad=300;
+	draw_rectangle_color(0,0,room_width,room_height-_yPad,c_white,c_white,c_black,c_black,false);
+	draw_rectangle_color(0,room_height-_yPad,room_width,room_height,c_black,c_black,c_black,c_black,false);
 	draw_set_alpha(1);
 	gpu_set_blendmode(bm_subtract);
-	with obj_light draw_self();
+	with obj_light if on draw_self();
 	gpu_set_blendmode(bm_normal);
 	surface_reset_target();
 	draw_surface(windowSurf,0,0);

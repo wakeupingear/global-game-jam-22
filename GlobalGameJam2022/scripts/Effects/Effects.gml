@@ -112,8 +112,8 @@ function animateProperty(obj,property,twerptype,startPos,endPos,step,destroyOPTI
 	ds_list_add(_p.lerpList,[obj,property,twerptype,startPos,endPos,0,step,1,destroyOPTIONAL]);
 }
 
-function shake(time,xAmp,yAmp=xAmp){
-	exit;
+function shake(time,xAmp,yAmp=-1){
+	if yAmp<0 yAmp=xAmp;
 	with obj_controller {
 		shakeTime=time;
 		shakeX=xAmp;
@@ -135,6 +135,7 @@ function drawBlur(quality,factor,surf){
 function drawShake(_x,_y,surf){
 	if !surface_exists(surf) surf=surface_create(surface_get_width(application_surface),surface_get_height(application_surface));
 	surface_set_target(surf);
+	draw_clear_alpha(c_black,1);
 	draw_surface(application_surface,0,0);
 	draw_surface(application_surface,_x,_y);
 	surface_reset_target();

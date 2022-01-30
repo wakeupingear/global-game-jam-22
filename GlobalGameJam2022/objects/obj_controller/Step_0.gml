@@ -1,9 +1,5 @@
 ///Step
 
-if !isServer&&oMouse.clicked{
-	sendPacket([netData.mouseClick,mouse_x,mouse_y]);
-}
-
 //Run the main gameplay loop
 if(isServer&&room!=rm_title){
 	if(state == States.setup){

@@ -7,6 +7,8 @@ if windowMode!=obj_controller.windowMode {
 	image_index=place_meeting(x,y,oMouse);
 	image_alpha=1;
 	if image_index&&oMouse.clicked{
+		mouse_clear(mb_left);
+		oMouse.clicked=false;
 		obj_controller.windowMode=windowMode;
 		shake(10,10);
 	}
