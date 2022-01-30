@@ -134,6 +134,9 @@ network = new Network(id, [oP.x,oP.y,oP.xscale,oP.yscale,oP.index],host);
 network.sendData = function(){
 	if isHost(host) sendPacket([netData.objData,network.token,oP.traits,traits[0],traits[1],traits[2],traits[3],traits[4],traits[5]]);
 }
+network.destroy = function() {
+	sendPacket([netData.objData,network.token,oP.destroy,clicked]);
+}
 network.sendData();
 
 //Variables
@@ -151,6 +154,10 @@ if(isServer){
 createShadow(0.4);
 yStartOffset=irandom(100);
 draw = function(_x,_y){
+	if shader_current()==-1&&false{
+		draw_sprite_ext(spr_dropShadow,0,x+_x,y+_y+105,0.5,0.5,0,c_black,0.7);
+	}
+	
 	if(!isServer && obj_controller.windowMode == windowModes.soul){
 		var alpha1 = abs(smoke_image_index-100)/100;
 		var alpha2 = (100-abs(smoke_image_index-100))/100;

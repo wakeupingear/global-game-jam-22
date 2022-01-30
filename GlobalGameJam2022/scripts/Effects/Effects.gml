@@ -153,11 +153,11 @@ function drawColorize(surf,r,g,b,a){
 	draw_surface(surf,camX()*(!isServer),camY()*(!isServer));
 }
 
-function collectParticle(spr,num){
+function collectParticle(_x,_y,spr,num){
 	var _num=num;
 	for (var i=0;i<_num;i++)
 	{
-		particle(x,y,depth+1,spr,0,{
+		particle(_x,_y,depth+1,spr,0,{
 			dir: i*360/_num,
 			spd: 3,
 			xscale: 3,

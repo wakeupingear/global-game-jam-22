@@ -1,5 +1,6 @@
 {
   "resources": [
+    {"id":{"name":"spr_dropShadow","path":"sprites/spr_dropShadow/spr_dropShadow.yy",},"order":18,},
     {"id":{"name":"spr_rankDisplay","path":"sprites/spr_rankDisplay/spr_rankDisplay.yy",},"order":20,},
     {"id":{"name":"obj_roomChange","path":"objects/obj_roomChange/obj_roomChange.yy",},"order":14,},
     {"id":{"name":"oTextbox","path":"objects/oTextbox/oTextbox.yy",},"order":0,},
@@ -25,6 +26,7 @@
     {"id":{"name":"obj_person","path":"objects/obj_person/obj_person.yy",},"order":3,},
     {"id":{"name":"oStartButton","path":"objects/oStartButton/oStartButton.yy",},"order":5,},
     {"id":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},"order":1,},
+    {"id":{"name":"shd_shadow","path":"shaders/shd_shadow/shd_shadow.yy",},"order":5,},
     {"id":{"name":"spr_heavenLight","path":"sprites/spr_heavenLight/spr_heavenLight.yy",},"order":30,},
     {"id":{"name":"JsonFiles","path":"scripts/JsonFiles/JsonFiles.yy",},"order":0,},
     {"id":{"name":"spr_suit_green","path":"sprites/spr_suit_green/spr_suit_green.yy",},"order":6,},
