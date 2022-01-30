@@ -113,6 +113,7 @@ function animateProperty(obj,property,twerptype,startPos,endPos,step,destroyOPTI
 }
 
 function shake(time,xAmp,yAmp=xAmp){
+	exit;
 	with obj_controller {
 		shakeTime=time;
 		shakeX=xAmp;

@@ -3,7 +3,7 @@ depth=100;
 if windowMode!=windowModes.normal {
 	switch windowMode{
 		case windowModes.thermal:
-			drawColorize(obj_controller.windowSurf,46,49,146,0.9);
+			drawColorize(obj_controller.windowSurf,46,49,146,0.5);
 			break;
 		case windowModes.xRay:
 			drawColorize(obj_controller.windowSurf,61,102,70,0.9);

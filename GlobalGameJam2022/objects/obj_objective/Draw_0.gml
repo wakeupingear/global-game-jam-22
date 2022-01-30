@@ -1,20 +1,26 @@
 ///Draw
+var drawX = x;
+var drawY = y;
 
-draw_self();
+draw(0,0);
 var height = 0;
 for(var i = 0; i < traitCount; i++){
 	if(enabledTraits[i]){
 		height+=drawnTraitHeights[i];
 	}
 }
-var drawX = x;
-var drawY = y-height/2;
+
+if textProg==0 exit;
+drawY -=height/2;
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+draw_set_font(fn_1);
+draw_set_alpha(textProg);
+var _sX=2;
+var _sY=1;
 for(var i = 0; i < traitCount; i++){
 	if(enabledTraits[i]){
 		//draw the trait
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
-		draw_set_font(fn_wantedPoster);
 		drawY += drawnTraitHeights[i]/2;
 		
 		switch(i){
@@ -25,51 +31,52 @@ for(var i = 0; i < traitCount; i++){
 			draw_set_color(c_black);
 			var cString = "";
 			switch(objectiveTraits[i]){
-			case(Clothes.suit): cString = "suit"; break;
-			case(Clothes.dress): cString = "dress"; break;
-			case(Clothes.tshirt): cString = "T-shirt"; break;
+			case(Clothes.suit): cString = "Suit"; break;
+			case(Clothes.dress): cString = "Dress"; break;
+			case(Clothes.tshirt): cString = "T-Shirt"; break;
 			}
-			draw_text(drawX, drawY, "wearing a " + cString);
+			draw_text(drawX, drawY, "Wearing a " + cString);
 			break;
 		case(Traits.color):
 			var cString = "";
 			switch(objectiveTraits[i]){
-			case(Colors.black): draw_set_color(c_black); cString = "black"; break;
-			case(Colors.white): draw_set_color(c_white); cString = "white"; break;
-			case(Colors.red): draw_set_color(c_red); cString = "red"; break;
-			case(Colors.green): draw_set_color(c_green); cString = "green"; break;
-			case(Colors.blue): draw_set_color(c_blue); cString = "blue"; break;
-			case(Colors.purple): draw_set_color(c_purple); cString = "purple"; break;
-			case(Colors.orange): draw_set_color(c_orange); cString = "orange"; break;
+			case(Colors.black): draw_set_color(c_black); cString = "Black"; break;
+			case(Colors.white): draw_set_color(c_white); cString = "White"; break;
+			case(Colors.red): draw_set_color(c_red); cString = "Red"; break;
+			case(Colors.green): draw_set_color(c_green); cString = "Green"; break;
+			case(Colors.blue): draw_set_color(c_blue); cString = "Blue"; break;
+			case(Colors.purple): draw_set_color(c_purple); cString = "Purple"; break;
+			case(Colors.orange): draw_set_color(c_orange); cString = "Orange"; break;
 			}
+			if draw_get_color()!=c_black draw_text_color(drawX+_sX, drawY+_sY, cString+ " clothing",c_black,c_black,c_black,c_black,1);
 			draw_text(drawX, drawY, cString+ " clothing");
 			break;
 		case(Traits.accessory):
 			var cString = "";
 			draw_set_color(c_black);
 			switch(objectiveTraits[i]){
-			case(Accessory.purse): cString = "a purse"; break;
-			case(Accessory.briefcase): cString = "a briefcase"; break;
-			case(Accessory.wings): cString = "wings"; break;
-			case(Accessory.pitchfork): cString = "a pitchfork"; break;
+			case(Accessory.purse): cString = "a Purse"; break;
+			case(Accessory.briefcase): cString = "a Briefcase"; break;
+			case(Accessory.wings): cString = "Wings"; break;
+			case(Accessory.pitchfork): cString = "a Pitchfork"; break;
 			}
 			draw_text(drawX, drawY, "with " + cString);
 			break;
 		case(Traits.thermals):
 			var tString = "";
 			switch(objectiveTraits[i]){
-			case(thermals.hot): draw_set_color(c_red); tString = "burning hot"; break;
-			case(thermals.medium): draw_set_color(c_orange); tString = "normal temp"; break;
-			case(thermals.cold): draw_set_color(c_green); tString = "icy cold"; break;
+			case(thermals.hot): draw_set_color(c_red); tString = "Burning Hot"; break;
+			case(thermals.medium): draw_set_color(c_orange); tString = "Normal Temp"; break;
+			case(thermals.cold): draw_set_color(c_green); tString = "Icy Cold"; break;
 			}
+			draw_text_color(drawX+_sX, drawY+_sY, tString,c_black,c_black,c_black,c_black,1);
 			draw_text(drawX, drawY, tString);
 			break;
 		}
-		
-		//Reset draw stuff
-		draw_set_color(c_white);
 		
 		//Move where we draw next
 		drawY += drawnTraitHeights[i]/2;
 	}
 }
+draw_set_alpha(1);
+draw_set_color(c_white);

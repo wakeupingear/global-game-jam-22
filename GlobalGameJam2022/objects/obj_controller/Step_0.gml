@@ -1,5 +1,9 @@
 ///Step
 
+if !isServer&&oMouse.clicked{
+	sendPacket([netData.mouseClick,mouse_x,mouse_y]);
+}
+
 //Run the main gameplay loop
 if(isServer&&room!=rm_title){
 	if(state == States.setup){
@@ -21,7 +25,7 @@ if(isServer&&room!=rm_title){
 			var predictedPeople = 0;
 			for(var i = 0; i < 3; i++){
 				flrDirs[i] = random(1) > 0.5 ? 1 : -1;
-				flrSpds[i] = random_range(0.5, 1);
+				flrSpds[i] = random_range(1, 1.5);
 				flrRates[i] = irandom_range(120, 360);
 				flrCooldowns[i] = 0;
 				predictedPeople += waveTimer/flrRates[i];
@@ -58,8 +62,8 @@ if(isServer&&room!=rm_title){
 			}
 		}
 		//Check for click
-		if(mouse_check_button_pressed(mb_left)){
-			var target = collision_point(mouse_x, mouse_y, obj_person,1,true);
+		if(oMouse.clicked){
+			var target = collision_point(oMouse.x, oMouse.y, obj_person,1,true);
 			if(target != noone){
 				isObjective = false;
 				if(target.objective != noone){
@@ -78,7 +82,7 @@ if(isServer&&room!=rm_title){
 		}
 		//Speed up
 		if(!instance_exists(obj_objective)){
-			speedBoost = clamp(speedBoost+(3/120), 1, 4);
+			speedBoost = clamp(speedBoost+(1/10), 1, 17);
 		}
 		//Check if all people are gone
 		if(waveTimer == 0 && !instance_exists(obj_person)){
@@ -111,7 +115,7 @@ if(isServer&&room!=rm_title){
 		}
 		rankTimer++;
 		//let the player skip at any point
-		if(mouse_check_button_pressed(mb_left)){
+		if(oMouse.clicked){
 			state = States.dialogue;
 			goalRankDisplayScale = 0;
 			//Start whatever conversation comes next
@@ -130,9 +134,9 @@ if(isServer&&room!=rm_title){
 }
 
 //Temp: open the other window if the space key is pressed
-/*if(isTest&&isServer && !connected && keyboard_check_pressed(vk_space)){
+if(isTest&&isServer && !connected && keyboard_check_pressed(vk_space)){
 	open_two_windows();
-}*/
+}
 
 //Move the camera
 if(isServer && connected){

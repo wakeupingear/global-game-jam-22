@@ -1,6 +1,6 @@
 ///Enums and Arrays for Traits
 #macro traitCount 7
-#macro leftBound 468
+#macro leftBound -30
 #macro rightBound (room_width - leftBound)
 enum Traits{
 	head,
@@ -123,7 +123,8 @@ if(isServer){
 	y = obj_controller.flrYs[flr];
 }
 
-checkShadow();
+createShadow(0.4);
+yStartOffset=irandom(100);
 draw = function(_x,_y){
 	if !isServer {
 		if obj_controller.windowMode==windowModes.thermal shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),
