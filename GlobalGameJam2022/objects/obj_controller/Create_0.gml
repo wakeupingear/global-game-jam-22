@@ -159,7 +159,7 @@ function personExits(p){
 			return;
 		}
 	}*/
-	if(p != noone){
+	if(p != noone && instance_exists(p.objective)){
 		p.objective.failure();
 		failedObjectives++;
 		return;
