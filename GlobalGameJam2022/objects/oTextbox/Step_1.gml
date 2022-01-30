@@ -77,8 +77,8 @@ if mode>-1&&mode<2
 		lastQuestionChoice=0;
 		textInd=0;
 		newLetterInd=0;
-		newLetterX=defaultLeftX;
-		newLetterY=30;
+		newLetterX=xPos+115;
+		newLetterY=yPos+30;
 		if mode!=-1 {
 			with oDiagLetter alarm[0]=1;
 		}

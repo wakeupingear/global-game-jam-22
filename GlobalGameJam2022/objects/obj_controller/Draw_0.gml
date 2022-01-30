@@ -1,15 +1,11 @@
 /// @description Draw shader
-depth=100;
+
 if windowMode!=windowModes.normal {
 	switch windowMode{
-		case windowModes.thermal:
-			drawColorize(obj_controller.windowSurf,46,49,146,0.9);
-			break;
 		case windowModes.xRay:
-			drawColorize(obj_controller.windowSurf,61,102,70,0.9);
 			break;
-		case windowModes.soul:
-			drawColorize(obj_controller.windowSurf,20,20,20,0.8);
+		case windowModes.thermal:
+			drawBlur(32,0.15,windowSurf);	
 			break;
 	}
 }
@@ -24,4 +20,11 @@ if shakeTime>0{
 else {
 	currentShakeX=0;
 	currentShakeY=0;
+}
+
+if(isServer && rankDisplayScale > 0.01){
+	var indicatorOffset = -256*displayRank*rankDisplayScale;
+	draw_sprite_ext(spr_rankDisplay, 0, room_width/2, room_height/2, rankDisplayScale, rankDisplayScale, 0, c_white, 1);
+	draw_sprite_ext(spr_rankIndicator, 0, room_width/2, room_height/2+indicatorOffset, rankDisplayScale, rankDisplayScale, 0, c_white, 1);
+	
 }

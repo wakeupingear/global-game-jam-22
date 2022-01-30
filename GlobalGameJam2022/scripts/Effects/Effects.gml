@@ -139,12 +139,11 @@ function drawShake(_x,_y,surf){
 	surface_reset_target();
 	draw_surface(surf,camX()*(!isServer),camY()*(!isServer));
 }
-function drawColorize(surf,r,g,b,a){
+function drawThermal(surf){
 	if !surface_exists(surf) surf=surface_create(surface_get_width(application_surface),surface_get_height(application_surface));
 	surface_set_target(surf);
-	shader_set(shd_colorize);
-	shader_set_uniform_f(shader_get_uniform(shd_colorize,"u_color"),r/255,g/255,b/255);
-	shader_set_uniform_f(shader_get_uniform(shd_colorize,"u_alpha"),a);
+	shader_set(shd_thermal);
+	shader_set_uniform_f(shader_get_uniform(shd_thermal,"u_color"),46/255,49/255,146/255);
 	draw_surface(application_surface,0,0);
 	if shader_current()!=-1 shader_reset();
 	surface_reset_target();

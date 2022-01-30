@@ -6,7 +6,6 @@ if clicked{ //destroy animation
 	
 	var _surf=surface_create(128,128);
 	surface_set_target(_surf);
-	draw_clear_alpha(c_black,0);
 	draw(64-x,64-y);
 	surface_reset_target();
 	var _spr=sprite_create_from_surface(_surf,0,0,surface_get_width(_surf),surface_get_width(_surf),false,false,64,64);

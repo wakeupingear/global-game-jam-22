@@ -126,10 +126,8 @@ if(isServer){
 checkShadow();
 draw = function(_x,_y){
 	if !isServer {
-		if obj_controller.windowMode==windowModes.thermal shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),
+		if obj_controller.windowMode==windowModes.thermal shader_set_uniform_f(shader_get_uniform(shd_thermalPerson,"u_color"),
 			thermalColors[traits[4]][0],thermalColors[traits[4]][1],thermalColors[traits[4]][2]);
-		else if obj_controller.windowMode==windowModes.xRay shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),0,0,0);
-		else if obj_controller.windowMode==windowModes.soul shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),1,1,1);
 	}
 	if(!accessoryOnTop[traits[Traits.accessory]]){
 		draw_sprite_ext(accessorySprites[traits[Traits.accessory]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);

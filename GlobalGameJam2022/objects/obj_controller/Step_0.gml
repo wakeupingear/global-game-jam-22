@@ -178,11 +178,8 @@ for (var k = ds_map_find_first(netObjs); !is_undefined(k); k = ds_map_find_next(
 if(window_command_get_active(window_command_maximize)){
 	window_command_set_active(window_command_maximize, false);
 	window_command_set_active(window_command_minimize, false);
-	if(isServer){
-		window_command_set_active(window_command_resize, false);
-	}else{
-		window_command_set_active(window_command_close, false);
-		window_frame_set_max_size(smallWindowSize,smallWindowSize);
+	window_command_set_active(window_command_resize, false);
+	if(!isServer){
 		window_set_topmost(true);
 		window_command_set_active(window_command_close, false);
 	}

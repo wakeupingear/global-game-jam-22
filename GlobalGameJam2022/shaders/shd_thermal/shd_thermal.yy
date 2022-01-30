@@ -5,7 +5,7 @@
     "path": "folders/Shaders.yy",
   },
   "resourceVersion": "1.0",
-  "name": "shd_colorize",
+  "name": "shd_thermal",
   "tags": [],
   "resourceType": "GMShader",
 }
