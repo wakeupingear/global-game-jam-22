@@ -126,7 +126,7 @@ enum States{
 	rank
 }
 state = States.setup;
-dialogueSequence = ["d1", "d2"];
+dialogueSequence = ["d1", "d2", "d3", "d4", "d5"];
 dialogueIndex = 0;
 var fy = 256;
 for(var i = 0; i < 3; i++){
@@ -134,7 +134,7 @@ for(var i = 0; i < 3; i++){
 	fy += 128;
 }
 peopleCount = 0;
-wave = 1;
+wave = 0;
 rank = -0.7;
 displayRank = rank;
 rankDisplayScale = 0;
@@ -142,10 +142,27 @@ goalRankDisplayScale = 0;
 
 //Used to create the objectives of a given wave
 function makeObjectives(w){
-	objCount = 3;
+	var objTraits = array_create(1);
+	switch(w){
+	case(0):
+		objTraits[0] = [Traits.clothes, Clothes.suit];
+		objTraits[1] = [Traits.color, Colors.red];
+		break;
+	case(1):
+		objTraits[0] = [Traits.clothes, Clothes.dress, Traits.head, Head.blondeWoman];
+		objTraits[1] = [Traits.color, Colors.blue, Traits.accessory, Accessory.pitchfork, Traits.head, Head.devil];
+		objTraits[1] = [Traits.color, Colors.orange, Traits.clothes, Clothes.suit];
+		break;
+	default:
+		objTraits[0] = [Traits.clothes, Clothes.suit, Traits.accessory, Accessory.pitchfork];
+		objTraits[1] = [Traits.color, Colors.red, Traits.head, Head.angel];
+		break;
+	}
+	objCount = array_length(objTraits);
 	objs = array_create(objCount);
 	for(var i = 0; i < objCount; i++){
 		objs[i] = instance_create_layer(450 + 250*i, 650, "Instances", obj_objective);
+		objs[i].setTraits(objTraits[i]);
 	}
 	return objs;
 }
