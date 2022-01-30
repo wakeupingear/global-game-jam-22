@@ -1,7 +1,10 @@
 {
     "d1": [
-        "Hi. This is the intro to the game and it has some flavor text",
-        "Click on the people who match the descriptions on the wanted posters"
+        "$goto","test",
+        "Welcome to the first day of the rest of your *Afterlife*!",
+        "$openTransition",60,
+        "#test",
+        "There's a few ^troublemakers^ trying to sneak past *Afterlife Security*! Click on them to send 'em right back!"
     ],
     "d2": [
         "Wanted posters can have multiple criteria",

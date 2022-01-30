@@ -87,7 +87,7 @@ with oDiagLetter
 	}
 	
 	var _a=image_alpha*oTextbox.image_alpha;
-	if letterState==textState.bold||letterState==textState.boldVibrate draw_text_outline_transformed_color(_xPos+_x+leftShift*guiX(),_yPos+_y,letter,c_white,c_white,image_alpha,c_nearBlack,c_nearBlack,_a,5,16,1,1,0);
+	if letterState==textState.bold||letterState==textState.boldVibrate draw_text_outline_transformed_color(_xPos+_x+leftShift*guiX(),_yPos+_y,letter,c_white,c_white,_a,c_nearBlack,c_nearBlack,_a,5,16,1,1,0);
 	else {
 		draw_text_color(_xPos+_x+leftShift*guiX()+3,_yPos+_y+2,letter,c_black,c_black,c_black,c_black,_a);
 		draw_text_color(_xPos+_x+leftShift*guiX(),_yPos+_y,letter,c_white,c_white,c_white,c_white,_a);

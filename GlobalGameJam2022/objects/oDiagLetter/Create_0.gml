@@ -1,6 +1,6 @@
 letter="";
 letterState=textState.normal;
-vibrateAmp=3;
+vibrateAmp=1;
 leftShift=0;
 
 image_alpha=0;
