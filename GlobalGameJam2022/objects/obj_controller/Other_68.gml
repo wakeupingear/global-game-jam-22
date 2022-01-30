@@ -101,7 +101,7 @@ switch async_load[? "type"] {
 					case netData.newUIButton:
 						var _num=instance_number(oModeToggle);
 						if _num>=3 break;
-						var _i=instance_create_depth(40+80*_num,40,-1000,oModeToggle);
+						var _i=instance_create_depth(40+85*_num,30,-1000,oModeToggle);
 						_i.windowMode=_num+1;
 						break;
 					case netData.mouseClick:

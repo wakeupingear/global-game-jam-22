@@ -12,7 +12,7 @@ switch obj {
 			case windowModes.xRay:
 				shader_set(shd_solidPerson); break;
 			case windowModes.soul:
-				break;
+				shader_set(shd_soulSmoke); break;
 			default: break;
 		}
 		break;
