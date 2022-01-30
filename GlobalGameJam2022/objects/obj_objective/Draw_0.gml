@@ -11,9 +11,13 @@ for(var i = 0; i < traitCount; i++){
 }
 
 if textProg==0 exit;
-drawY -=height/2;
+drawY -= height/3;
+drawY += 130;
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
+draw_set_font(fn_wantedPoster);
+draw_set_color(c_black);
+draw_text(x,y-20,"Wanted");
 draw_set_font(fn_2);
 draw_set_alpha(textProg);
 var _sX=2;
@@ -25,7 +29,7 @@ for(var i = 0; i < traitCount; i++){
 		
 		switch(i){
 		case(Traits.head):
-			draw_sprite(headSprites[objectiveTraits[i]], 0, drawX, drawY);
+			draw_sprite_ext(headSprites[objectiveTraits[i]], 0, drawX, drawY,2,2,0,c_white,textProg);
 			break;
 		case(Traits.clothes):
 			draw_set_color(c_black);
@@ -50,17 +54,6 @@ for(var i = 0; i < traitCount; i++){
 			}
 			if draw_get_color()!=c_black draw_text_color(drawX+_sX, drawY+_sY, cString+ " clothing",c_black,c_black,c_black,c_black,1);
 			draw_text(drawX, drawY, cString+ " clothing");
-			break;
-		case(Traits.accessory):
-			var cString = "";
-			draw_set_color(c_black);
-			switch(objectiveTraits[i]){
-			case(Accessory.purse): cString = "a Purse"; break;
-			case(Accessory.briefcase): cString = "a Briefcase"; break;
-			case(Accessory.wings): cString = "Wings"; break;
-			case(Accessory.pitchfork): cString = "a Pitchfork"; break;
-			}
-			draw_text(drawX, drawY, "with " + cString);
 			break;
 		case(Traits.thermals):
 			var tString = "";

@@ -88,7 +88,6 @@ switch async_load[? "type"] {
 								_id.traits[3]=buffer_read(_data,buffer_s16);
 								_id.traits[4]=buffer_read(_data,buffer_s16);
 								_id.traits[5]=buffer_read(_data,buffer_s16);
-								_id.traits[6]=buffer_read(_data,buffer_s16);
 								break;
 						}
 						break;

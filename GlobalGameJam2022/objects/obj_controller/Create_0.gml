@@ -86,7 +86,7 @@ if (isServer) {
 	window_set_position(display_get_width()/2-window_get_width()/2, display_get_height()/2-window_get_height()/2);
 }else{
 	// <secondary instance>
-	window_set_caption("Secondary")
+	window_set_caption(" ")
 	window_set_position(display_get_width()/2-smallWindowSize/2, display_get_height()/2-smallWindowSize/2-100);
 }
 

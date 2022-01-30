@@ -1,12 +1,11 @@
 ///Enums and Arrays for Traits
-#macro traitCount 7
+#macro traitCount 6
 #macro leftBound -30
 #macro rightBound (room_width - leftBound)
 enum Traits{
 	head,
 	clothes,
 	color,
-	accessory,
 	thermals,
 	xray,
 	soul
@@ -31,7 +30,7 @@ enum Clothes{
 }
 clothesSprites = [  [spr_suit_black,spr_suit_white,spr_suit_red,spr_suit_green,spr_suit_blue,spr_suit_purple,spr_suit_orange],
 					[spr_dress_black,spr_dress_white,spr_dress_red,spr_dress_green,spr_dress_blue,spr_dress_purple,spr_dress_orange],
-					[spr_suit_black,spr_suit_white,spr_suit_red,spr_suit_green,spr_suit_blue,spr_suit_purple,spr_suit_orange]]
+					[spr_tshirt_black,spr_tshirt_white,spr_tshirt_red,spr_tshirt_green,spr_tshirt_blue,spr_tshirt_purple,spr_tshirt_orange]]
 enum Colors{
 	black,
 	white,
@@ -42,14 +41,6 @@ enum Colors{
 	orange
 }
 colors = [c_black, c_white, c_red, c_green, c_blue, c_purple, c_orange];
-enum Accessory{
-	purse,
-	briefcase,
-	wings,
-	pitchfork
-}
-accessorySprites = [spr_purse, spr_briefcase, spr_wings, spr_pitchfork];
-accessoryOnTop = [true, true, false, true];
 
 enum thermals {
 	hot,
@@ -75,7 +66,7 @@ if(isServer){
 	if(objective == noone){
 		var bad = true;
 		while(bad){
-			traits = [irandom_range(0, 9), irandom_range(0, 2), irandom_range(0, 6), irandom_range(0, 3),
+			traits = [irandom_range(0, 9), irandom_range(0, 2), irandom_range(0, 6),
 				irandom(array_length(thermalColors)-1), //window mode 1
 				0, //window 2
 				0 //window 3
@@ -97,7 +88,6 @@ if(isServer){
 				case(Traits.head): traits[i] = irandom_range(0, 5); break;
 				case(Traits.clothes): traits[i] = irandom_range(0, 2); break;
 				case(Traits.color): traits[i] = irandom_range(0, 6); break;
-				case(Traits.accessory): traits[i] = irandom_range(0, 3); break;
 				default: traits[i]=0; break;
 				}
 			}
@@ -110,7 +100,7 @@ host = hostSide.server;
 network = -1;
 network = new Network(id, [oP.x,oP.y,oP.xscale,oP.yscale,oP.index],host); 
 network.sendData = function(){
-	if isHost(host) sendPacket([netData.objData,network.token,oP.traits,traits[0],traits[1],traits[2],traits[3],traits[4],traits[5],traits[6]]);
+	if isHost(host) sendPacket([netData.objData,network.token,oP.traits,traits[0],traits[1],traits[2],traits[3],traits[4],traits[5]]);
 }
 network.sendData();
 
@@ -132,7 +122,6 @@ if(isServer){
 if(isServer){
 	sprite_index = clothesSprites[traits[Traits.clothes]][traits[Traits.color]];
 	image_xscale = dir;
-	image_yscale = 1;
 }
 
 createShadow(0.4);
@@ -140,16 +129,10 @@ yStartOffset=irandom(100);
 draw = function(_x,_y){
 	if !isServer {
 		if obj_controller.windowMode==windowModes.thermal shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),
-			thermalColors[traits[4]][0],thermalColors[traits[4]][1],thermalColors[traits[4]][2]);
+			thermalColors[traits[Traits.thermals]][0],thermalColors[traits[Traits.thermals]][1],thermalColors[traits[Traits.thermals]][2]);
 		else if obj_controller.windowMode==windowModes.xRay shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),0,0,0);
 		else if obj_controller.windowMode==windowModes.soul shader_set_uniform_f(shader_get_uniform(shd_solidPerson,"u_color"),1,1,1);
 	}
-	if(!accessoryOnTop[traits[Traits.accessory]]){
-		draw_sprite_ext(accessorySprites[traits[Traits.accessory]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);
-	}
 	draw_sprite_ext(clothesSprites[traits[Traits.clothes]][traits[Traits.color]], image_index, x+_x, y+_y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
 	draw_sprite_ext(headSprites[traits[Traits.head]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);
-	if(accessoryOnTop[traits[Traits.accessory]]){
-		draw_sprite_ext(accessorySprites[traits[Traits.accessory]], 0, x+_x, y+_y,image_xscale,image_yscale,image_angle,c_white, image_alpha);
-	}
 }
