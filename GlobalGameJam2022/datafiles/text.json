@@ -1,11 +1,12 @@
 {
     "d1": [
         "Hi. This is the intro to the game and it has some flavor text",
-        "$open_two_windows",60,
+        "$open_two_windows",60,"$addCamera","$addCamera",
         "Click on the people who match the descriptions on the wanted posters"
     ],
     "d2": [
         "Wanted posters can have multiple criteria",
+        "$addCamera",
         "Only click on people who match every category in a wanted poster"
     ],
     "d3": [

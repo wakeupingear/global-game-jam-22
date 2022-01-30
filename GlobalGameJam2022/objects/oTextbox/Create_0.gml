@@ -5,6 +5,8 @@ text=[];
 mode=0;
 diag=0;
 textboxTime=0; //track duration
+font=fn_1;
+draw_set_font(font);
 
 padding=5; //border padding
 textX=54; //text starting x
@@ -61,6 +63,8 @@ yPos=0;
 setHeight=function(){
 	top=false;
 }
+
+defaultLeftX=115;
 
 confirmIcon=noone;
 

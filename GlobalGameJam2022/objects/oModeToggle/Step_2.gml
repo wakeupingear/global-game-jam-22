@@ -1,4 +1,6 @@
 /// @description Position
+visible=(instance_number(object_index)>1);
+if !visible exit;
 x=camX()+xstart;
 y=camY()+ystart;
 if windowMode!=obj_controller.windowMode {

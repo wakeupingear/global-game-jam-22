@@ -61,6 +61,12 @@ function commandProcess(command){
 				var _scr=asset_get_index(_name);
 				if script_exists(_scr) script_execute(_scr)
 				else switch _name{
+					case "font":
+						font=_scr;
+						break;
+					case "addCamera":
+						sendPacket([netData.newUIButton]);
+						break;
 					default:
 						with _obj variable_instance_set(id,_name,_val);
 						if _name=="key" 
@@ -90,11 +96,13 @@ function processTextVariables(text)
 	return text;
 }
 
-function conversation(textData,_x=0,_y=0){
+function conversation(textData,_x=200,_y=480){
 	//var _alreadyOpen=global.menuOpen;
 	//global.menuOpen=true;
 	if instance_exists(oTextbox)&&oTextbox.mode>-1 var _t=instance_find(oTextbox,0);
 	else var _t=instance_create_depth(120,150,-1005,oTextbox);
+	_t.xPos=_x;
+	_t.yPos=_y;
 	var _canStart=true;
 	for (var i=0;i<instance_number(oTextbox);i++) if !instance_find(oTextbox,i).mustTouch
 	{
@@ -116,8 +124,6 @@ function conversation(textData,_x=0,_y=0){
 			if sentence=="" image_alpha=0; //Stops the box from being visible for 1 frame when it starts with a popup
 		}
 		//if !_alreadyOpen&&_t.mode<0 global.menuOpen=false;
-		_t.xPos=_x;
-		_t.yPos=_y;
 	}
 	
 	//if global.menuOpen rumbleStart(rumbleType.lightPulse);

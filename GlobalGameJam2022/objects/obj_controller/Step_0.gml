@@ -177,7 +177,7 @@ if(window_command_get_active(window_command_maximize)){
 		window_command_set_active(window_command_resize, false);
 	}else{
 		window_command_set_active(window_command_close, false);
-		window_frame_set_max_size(515,515);
+		window_frame_set_max_size(smallWindowSize,smallWindowSize);
 		window_set_topmost(true);
 	}
 }
