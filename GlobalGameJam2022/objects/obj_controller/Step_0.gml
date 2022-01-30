@@ -144,7 +144,7 @@ if(isServer&&room!=rm_title){
 if(isTest&&isServer && !connected && keyboard_check_pressed(vk_space)){
 	open_two_windows();
 }
-if(keyboard_check_pressed(vk_enter)){
+if(isTest&&keyboard_check_pressed(vk_enter)){
 	dialogueIndex = 20;
 	rank = 0.95;
 }

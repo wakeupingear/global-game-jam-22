@@ -4,6 +4,8 @@
 #macro c_nearWhite make_color_rgb(230,230,230)
 #macro smallWindowSize 256
 
+gml_pragma("PNGCrush");
+
 randomize();
 
 enum netData {
