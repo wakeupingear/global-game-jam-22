@@ -4,6 +4,8 @@ if(isServer){
 
 	//Move
 	x += spd*dir*obj_controller.speedBoost;
+	var _bobPer=round(30/spd-obj_controller.speedBoost);
+	y+=0.75*sin(((global.roomTime+yStartOffset)%_bobPer)*pi/_bobPer-pi/2);
 	image_xscale=dir;
 	
 	//Check if we've passed the bound and we're donezo

@@ -1,4 +1,5 @@
 /// @description Send room
+if layer_exists(layer_get_name("Controller")) layer=layer_get_id("Controller");
 if (sendNextRoom) {
 	sendPacket([netData.newRoom]);
 }

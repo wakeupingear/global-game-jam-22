@@ -14,8 +14,11 @@ objectiveTraits = array_create(traitCount, 0);
 drawnTraitHeights = array_create(traitCount, 32);
 drawnTraitHeights[Traits.head] = 64;
 
+moveProg=0;
+textProg=0;
+y+=300;
 
-function personFits(p){
+personFits=function(p){
 	for(var i = 0; i < traitCount; i++){
 		if(enabledTraits[i]){
 			if(objectiveTraits[i] != p.traits[i]){
@@ -26,23 +29,29 @@ function personFits(p){
 	return true;
 }
 
+createShadow(0.4,20,8);
+active=true;
 //Called when it is successfully completed
-function success(){
-	instance_destroy();
+success=function(){
+	active=false;
 }
 
 //Called when it is failed
-function failure(){
-	instance_destroy();
+failure=function(){
+	active=false;
 }
 
 //Sets this objective's traits according to the array
 //The array should be made of pairs of Traits and the goal for that trait
 //e.g. setTraits([Traits.accessory, Accessory.briefcase, Traits.color, Colors.black])
 //matches people with a briefcase wearing black
-function setTraits(traitArr){
+setTraits=function(traitArr){
 	for(var i = 0; i < array_length(traitArr); i+=2){
 		enabledTraits[traitArr[i]] = true;
 		objectiveTraits[traitArr[i]] = traitArr[i+1];
 	}
+}
+
+draw=function(_x,_y){
+	draw_sprite_ext(sprite_index,image_index,x+_x,y+_y,image_xscale,image_yscale,image_angle,image_blend,image_alpha);
 }

@@ -14,7 +14,8 @@ enum netData {
 	objData,
 	windowCoords,
 	windowMode,
-	newUIButton
+	newUIButton,
+	mouseClick,
 }
 
 enum oP {
@@ -54,8 +55,8 @@ updateAll = false;
 instance_create_depth(0,0,0,oMouse);
 
 global.roomTime=0;
-global.hudAlpha=0.95;
-global.hudColor=make_color_rgb(30,30,100);
+global.hudAlpha=0.7;
+global.hudColor=make_color_rgb(212,174,115);
 
 //Shadows
 global.shadowMap = ds_map_create();
@@ -127,11 +128,7 @@ enum States{
 state = States.setup;
 dialogueSequence = ["d1", "d2", "d3", "d4", "d5"];
 dialogueIndex = 0;
-var fy = 256;
-for(var i = 0; i < 3; i++){
-	flrYs[i] = fy;
-	fy += 128;
-}
+flrYs=[124,332,572];
 peopleCount = 0;
 wave = 0;
 rank = -0.7;
@@ -146,8 +143,9 @@ function makeObjectives(w){
 	objCount = array_length(objTraits);
 	objs = array_create(objCount);
 	for(var i = 0; i < objCount; i++){
-		objs[i] = instance_create_layer(room_width/2 + 250*(i - (objCount-1)/2), 750, "Instances", obj_objective);
+		objs[i] = instance_create_layer(room_width/2 + 350*(i - (objCount-1)/2), 720, "Instances", obj_objective);
 		objs[i].setTraits(objTraits[i]);
+		objs[i].moveProg=0-i*0.2;
 	}
 	return objs;
 }

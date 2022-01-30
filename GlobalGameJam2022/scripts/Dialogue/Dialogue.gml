@@ -96,7 +96,7 @@ function processTextVariables(text)
 	return text;
 }
 
-function conversation(textData,_x=200,_y=480){
+function conversation(textData,_x=200,_y=510){
 	//var _alreadyOpen=global.menuOpen;
 	//global.menuOpen=true;
 	if instance_exists(oTextbox)&&oTextbox.mode>-1 var _t=instance_find(oTextbox,0);

@@ -78,7 +78,7 @@ if mode>-1&&mode<2
 		textInd=0;
 		newLetterInd=0;
 		newLetterX=defaultLeftX;
-		newLetterY=30;
+		newLetterY=defaultTopY;
 		if mode!=-1 {
 			with oDiagLetter alarm[0]=1;
 		}
@@ -128,7 +128,7 @@ else if mode==2
 			//if !questionChoice&&buttonPressed(control.right) questionChoice=1;
 			//else if questionChoice&&buttonPressed(control.left) questionChoice=0;
 		}
-		if mouse_check_button_pressed(mb_left) //false//&&buttonPressed(control.confirm)
+		if oMouse.clicked //false//&&buttonPressed(control.confirm)
 		{
 			//rumbleStart(rumbleType.lighterPulse);
 			if question
