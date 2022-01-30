@@ -44,6 +44,7 @@ enum windowModes {
 }
 windowMode = windowModes.normal;
 windowSurf=-1;
+music=-1;
 
 //Server variables
 client = -1;

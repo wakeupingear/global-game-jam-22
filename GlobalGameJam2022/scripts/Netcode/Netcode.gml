@@ -38,7 +38,7 @@ function sendPacket(array,buf=-1){
 		if buf==-1 buf=buffer_create(32,buffer_wrap,1);
 		buffer_seek(buf,buffer_seek_start,0);
 		for (var i=0;i<array_length(array);i++){
-			if is_int64(array[i])||is_real(array[i]){
+			if is_int64(array[i])||is_real(array[i])||is_bool(array[i]){
 				buffer_write(buf, buffer_s16, array[i]);
 			}
 			else if is_string(array[i]) buffer_write(buf,buffer_string,array[i]);

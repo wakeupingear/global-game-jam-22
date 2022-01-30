@@ -2,7 +2,7 @@
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
-  "origin": 0,
+  "origin": 9,
   "preMultiplyAlpha": false,
   "edgeFiltering": false,
   "collisionTolerance": 0,
@@ -27,6 +27,12 @@
     {"compositeImage":{"FrameId":{"name":"96e1e827-2820-4641-91a9-3e01390712da","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"96e1e827-2820-4641-91a9-3e01390712da","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"LayerId":{"name":"0a4b3941-2114-41d6-b923-95cd72245e29","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"DamnIt_Logo","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"resourceVersion":"1.0","name":"96e1e827-2820-4641-91a9-3e01390712da","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"c549716e-1bea-442e-a1e6-6a0ccf7c312c","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"c549716e-1bea-442e-a1e6-6a0ccf7c312c","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"LayerId":{"name":"0a4b3941-2114-41d6-b923-95cd72245e29","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"DamnIt_Logo","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"resourceVersion":"1.0","name":"c549716e-1bea-442e-a1e6-6a0ccf7c312c","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"2fd933ca-304b-408a-9244-fd5216184b0c","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"2fd933ca-304b-408a-9244-fd5216184b0c","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"LayerId":{"name":"0a4b3941-2114-41d6-b923-95cd72245e29","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"DamnIt_Logo","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"resourceVersion":"1.0","name":"2fd933ca-304b-408a-9244-fd5216184b0c","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"DamnIt_Logo","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},
@@ -36,12 +42,14 @@
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
-    "length": 1.0,
+    "length": 3.0,
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"576c10ee-594b-481c-831d-b2e56a22f032","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"96e1e827-2820-4641-91a9-3e01390712da","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"90350545-e93b-493d-a1c1-a4aacfe5389a","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"c549716e-1bea-442e-a1e6-6a0ccf7c312c","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"d4bcb946-adf2-4dbb-b94f-366ae348326d","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"2fd933ca-304b-408a-9244-fd5216184b0c","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -54,8 +62,8 @@
     "backdropHeight": 768,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
-    "xorigin": 0,
-    "yorigin": 0,
+    "xorigin": 329,
+    "yorigin": 1092,
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"DamnIt_Logo","path":"sprites/DamnIt_Logo/DamnIt_Logo.yy",},

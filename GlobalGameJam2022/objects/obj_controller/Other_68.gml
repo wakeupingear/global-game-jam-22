@@ -78,6 +78,11 @@ switch async_load[? "type"] {
 								variable_instance_set(_id,buffer_read(_data,buffer_string),buffer_read(_data,buffer_string));
 								break;
 							case oP.destroy:
+								var _arg=buffer_read(_data,buffer_s16);
+								switch _id.object_index{
+									case obj_person: _id.clicked=_arg; break;
+									default: break;
+								}
 								ds_map_delete(netObjs,_token);
 								instance_destroy(_id);
 								break;

@@ -30,11 +30,13 @@ createShadow(0.4,20,8);
 active=true;
 //Called when it is successfully completed
 success=function(){
+	image_blend=merge_color(c_white,c_green,0.5);
 	active=false;
 }
 
 //Called when it is failed
 failure=function(){
+	image_blend=merge_color(c_white,c_red,0.5);
 	active=false;
 }
 

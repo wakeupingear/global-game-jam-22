@@ -35,7 +35,7 @@ if (animStart) {
 			var _yAb = _yRel * sprite_height;
 		
 			// Skip if alpha is 0
-			if (alpha[floor(_xAb), floor(_yAb)] <= 0) continue;
+			if (alpha[floor(_xAb), floor(_yAb)] <= 0.5) continue;
 		
 			// Absolute position in room
 			var _x = _xBase + _xAb;

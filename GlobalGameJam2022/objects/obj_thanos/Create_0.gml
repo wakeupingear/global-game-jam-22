@@ -1,4 +1,4 @@
-createVars = function(){
+createVars = function(parent){
 	// Shader Uniforms
 	uniUvs = shader_get_uniform(shd_thanos, "uvs");
 	uniVal = shader_get_uniform(shd_thanos, "val");
@@ -22,14 +22,18 @@ createVars = function(){
 	partSys = part_system_create();
 
 	myLevel=getLevel(y);
-	if myLevel==level.Heaven fadeColor=make_color_rgb(230,230,230);
+	if !isServer{
+		fadeColor=c_white;
+	}
+	else if myLevel==level.Heaven fadeColor=make_color_rgb(230,230,230);
 	else if myLevel==level.Purgatory fadeColor=make_color_rgb(230,230,230);
 	else fadeColor=c_black;
 	partDust = part_type_create(); // Create dust particle
 	part_type_sprite(partDust, sPartDust, 0, 0, 0);
 	part_type_color1(partDust, fadeColor);
 	part_type_speed(partDust, 0.15, 0.28, 0, 0.04);
-	part_type_direction(partDust, 10, 85, 0.1, 8);
+	var _dir=(sign(parent.image_xscale)==-1)*90
+	part_type_direction(partDust, 10+_dir, 85+_dir, 0.1, 8);
 	part_type_alpha2(partDust, 1, 0);
 	part_type_life(partDust, 90, 150);
 
