@@ -9,5 +9,5 @@ uniform float u_alpha;
 void main()
 {
 	vec4 base = texture2D( gm_BaseTexture, v_vTexcoord );
-    gl_FragColor = v_vColour * mix(base,vec4(u_color.r,u_color.g,u_color.b,base.a),u_alpha);
+	gl_FragColor=vec4(u_color.r,u_color.g,u_color.b,base.a);
 }

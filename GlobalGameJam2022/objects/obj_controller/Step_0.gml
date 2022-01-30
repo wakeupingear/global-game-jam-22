@@ -76,6 +76,10 @@ if(isServer&&room!=rm_title){
 				instance_destroy(target);
 			}
 		}
+		//Speed up
+		if(!instance_exists(obj_objective)){
+			speedBoost = clamp(speedBoost+(3/120), 1, 4);
+		}
 		//Check if all people are gone
 		if(waveTimer == 0 && !instance_exists(obj_person)){
 			//Just in case there was some bug, fail all remaining objectives
@@ -93,6 +97,7 @@ if(isServer&&room!=rm_title){
 			state = States.rank;
 			rankTimer = 0;
 			goalRankDisplayScale = 1;
+			speedBoost = 1;
 			//sendPacket([netData.disconnect]);
 		}
 	}else if(state == States.rank){
@@ -179,5 +184,6 @@ if(window_command_get_active(window_command_maximize)){
 		window_command_set_active(window_command_close, false);
 		window_frame_set_max_size(smallWindowSize,smallWindowSize);
 		window_set_topmost(true);
+		window_command_set_active(window_command_close, false);
 	}
 }

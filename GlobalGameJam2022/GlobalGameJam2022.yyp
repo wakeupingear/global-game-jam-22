@@ -54,6 +54,7 @@
     {"id":{"name":"spr_head_3","path":"sprites/spr_head_3/spr_head_3.yy",},"order":4,},
     {"id":{"name":"libfilesystem","path":"extensions/libfilesystem/libfilesystem.yy",},"order":4,},
     {"id":{"name":"HelperScripts","path":"scripts/HelperScripts/HelperScripts.yy",},"order":8,},
+    {"id":{"name":"getObjectiveTraits","path":"scripts/getObjectiveTraits/getObjectiveTraits.yy",},"order":11,},
     {"id":{"name":"oDiagLetter","path":"objects/oDiagLetter/oDiagLetter.yy",},"order":1,},
     {"id":{"name":"spr_dress","path":"sprites/spr_dress/spr_dress.yy",},"order":0,},
     {"id":{"name":"obj_thanos","path":"objects/obj_thanos/obj_thanos.yy",},"order":9,},
@@ -86,6 +87,7 @@
   ],
   "isDnDProject": false,
   "isEcma": false,
+  "tutorialPath": "",
   "configs": {
     "name": "Default",
     "children": [
@@ -149,7 +151,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"text.json","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.1.0.609",
+    "IDEVersion": "2.3.7.606",
   },
   "resourceVersion": "1.4",
   "name": "GlobalGameJam2022",

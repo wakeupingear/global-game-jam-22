@@ -2,6 +2,7 @@
 #macro isTest (os_get_config()=="Test")
 #macro c_nearBlack make_color_rgb(25,25,25)
 #macro c_nearWhite make_color_rgb(230,230,230)
+#macro smallWindowSize 256
 
 randomize();
 
@@ -77,7 +78,7 @@ if(server < 0){
 }
 #macro isServer (!obj_controller.program)
 
-smallWindowSize=514;
+
 if (isServer) {
 	// <primary instance>
 	window_set_caption("Primary")
@@ -137,29 +138,15 @@ rank = -0.7;
 displayRank = rank;
 rankDisplayScale = 0;
 goalRankDisplayScale = 0;
+speedBoost = 1;
 
 //Used to create the objectives of a given wave
 function makeObjectives(w){
-	var objTraits = array_create(1);
-	switch(w){
-	case(0):
-		objTraits[0] = [Traits.clothes, Clothes.suit];
-		objTraits[1] = [Traits.color, Colors.red];
-		break;
-	case(1):
-		objTraits[0] = [Traits.clothes, Clothes.dress, Traits.head, Head.blondeWoman];
-		objTraits[1] = [Traits.color, Colors.blue, Traits.accessory, Accessory.pitchfork, Traits.head, Head.devil];
-		objTraits[1] = [Traits.color, Colors.orange, Traits.clothes, Clothes.suit];
-		break;
-	default:
-		objTraits[0] = [Traits.clothes, Clothes.suit, Traits.accessory, Accessory.pitchfork];
-		objTraits[1] = [Traits.color, Colors.red, Traits.head, Head.angel];
-		break;
-	}
+	var objTraits = getObjectiveTraits(w);
 	objCount = array_length(objTraits);
 	objs = array_create(objCount);
 	for(var i = 0; i < objCount; i++){
-		objs[i] = instance_create_layer(450 + 250*i, 650, "Instances", obj_objective);
+		objs[i] = instance_create_layer(room_width/2 + 250*(i - (objCount-1)/2), 750, "Instances", obj_objective);
 		objs[i].setTraits(objTraits[i]);
 	}
 	return objs;
